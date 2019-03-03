@@ -25,24 +25,28 @@
 //    2. доска должна иметь столько клеток, как и настоящая шахматная
 
     self.checkersArray = [NSMutableArray array];
-    CGFloat width = self.view.bounds.size.width - 20;
-
-    self.field = [[UIView alloc] initWithFrame:CGRectMake(10, 248, width, width)];
+    CGFloat width = self.view.bounds.size.width;
+    CGFloat height = self.view.bounds.size.height;
+    CGFloat minSide = MIN(width, height);
+    NSLog(@"rect = %@", NSStringFromCGRect(CGRectMake(0, 0, width, height)));
+    NSLog(@"x = %f y = %f", self.view.center.x, self.view.center.x);
+    NSInteger cellsInLine = 20;
+    
+    self.field = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x - minSide / 2, self.view.center.y - minSide / 2, minSide, minSide)];
     [self.view addSubview:self.field];
     self.field.backgroundColor = [UIColor redColor];
     
-    self.cellSize = width / 8;
-    self.checkersArray = [NSMutableArray array];
-    CGFloat checkersSizeInCell = 0.7;
-    CGFloat checkerSize = self.cellSize * checkersSizeInCell;
-    CGFloat indentInCell = self.cellSize * (1 - checkersSizeInCell) / 2;
+    self.cellSize = MIN(width, height) / cellsInLine;
+    CGFloat multiplier = 0.7;
+    CGFloat checkerSize = self.cellSize * multiplier;
+    CGFloat indentInCell = self.cellSize * (1 - multiplier) / 2;
+    NSInteger linesWithChekers = 16;
     
-    for (NSInteger i = 0; i < 8; i++) {
-        for (NSInteger j = 0; j < 8; j++) {
+    for (NSInteger i = 0; i < cellsInLine; i++) {
+        for (NSInteger j = 0; j < cellsInLine; j++) {
             
             UIView *cell = [[UIView alloc]initWithFrame:CGRectMake(self.cellSize * j, self.cellSize * i, self.cellSize, self.cellSize)];
             
-            cell.backgroundColor = [UIColor blueColor];
             if ((i + j) % 2 != 0) {
                 cell.backgroundColor = [UIColor lightGrayColor];
             } else {
@@ -50,22 +54,19 @@
             }
             [self.field addSubview:cell];
             
-            if (i < 3 && (i + j) % 2 == 0) {
-                UIView *checkerWhite = [[UIView alloc] initWithFrame:CGRectMake(self.cellSize * j + indentInCell,
-                                                                                self.cellSize * i + indentInCell,
-                                                                                checkerSize, checkerSize)];
-                checkerWhite.backgroundColor = [UIColor whiteColor];
-                [self.field addSubview:checkerWhite];
-                [self.checkersArray addObject:checkerWhite];
+            UIView *checker = [[UIView alloc] initWithFrame:CGRectMake(self.cellSize * j + indentInCell,
+                                                                          self.cellSize * i + indentInCell,
+                                                                          checkerSize,
+                                                                          checkerSize)];
+
+            if (i < cellsInLine - (cellsInLine - (linesWithChekers / 2)) && (i + j) % 2 == 0) {
+                checker.backgroundColor = [UIColor whiteColor];
             }
-                if (i > 4 && (i + j) % 2 == 0) {
-                    UIView *checkerRed = [[UIView alloc] initWithFrame:CGRectMake(self.cellSize * j + indentInCell,
-                                                                                  self.cellSize * i + indentInCell,
-                                                                                  checkerSize, checkerSize)];
-                    checkerRed.backgroundColor = [UIColor redColor];
-                    [self.field addSubview:checkerRed];
-                    [self.checkersArray addObject:checkerRed];
+            if (i >= cellsInLine - linesWithChekers / 2 && (i + j) % 2 == 0) {
+                checker.backgroundColor = [UIColor redColor];
             }
+            [self.field addSubview:checker];
+            [self.checkersArray addObject:checker];
         }
     }
     
@@ -73,8 +74,10 @@
 //    3. Доска должна быть вписана в максимально возможный квадрат, т.е. либо бока, либо верх или низ должны касаться границ экрана
 //    4. Применяя соответствующие маски сделайте так, чтобы когда устройство меняет ориентацию, то все клетки растягивались соответственно и ничего не вылетало за пределы экрана.
 
-    self.field.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
-                             UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.field.autoresizingMask =   UIViewAutoresizingFlexibleTopMargin |
+                                    UIViewAutoresizingFlexibleBottomMargin |
+                                    UIViewAutoresizingFlexibleLeftMargin |
+                                    UIViewAutoresizingFlexibleRightMargin;
     
     //Мастер
     //5. При повороте устройства все черные клетки должны менять цвет :)
@@ -82,8 +85,8 @@
     
 }
 
-- (void)drawColor:(UIColor*) color {
-    for (UIView *view in [self.view.subviews objectAtIndex:0].subviews) {
+- (void)changeCellsColor:(UIColor*) color {
+    for (UIView *view in self.field.subviews) {
         BOOL isCell = view.frame.size.height == self.cellSize;
         if (view.backgroundColor != [UIColor lightGrayColor] && isCell) {
             view.backgroundColor = color;
@@ -91,18 +94,18 @@
     }
 }
 
+- (UIView *) randomChecker {
+    return [self.checkersArray objectAtIndex:arc4random() % [self.checkersArray count]];
+}
+
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    UIColor *color = [[UIColor alloc] init];
     
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        color = [UIColor greenColor];
-        [self drawColor:color];
-
+        [self changeCellsColor:[UIColor greenColor]];
     } else if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
-        color = [UIColor blackColor];
-        [self drawColor:color];
+        [self changeCellsColor:[UIColor blackColor]];
     }
     
     //8. Поставьте белые и красные шашки (квадратные вьюхи) так как они стоят на доске. Они должны быть сабвьюхами главной вьюхи (у них и у клеток один супервью)
@@ -111,17 +114,15 @@
     NSInteger randomCountChange = arc4random() % ([self.checkersArray count] / 2) + 1;
 
     for (NSInteger i = 0; i < randomCountChange; i++) {
-        UIView* firstChecker = [self.checkersArray objectAtIndex:arc4random() % [self.checkersArray count]];
-        UIView* secondChecker = [self.checkersArray objectAtIndex:arc4random() % [self.checkersArray count]];
 
         [UIView animateWithDuration:1 animations:^{
 
-            CGRect tempRect = firstChecker.frame;
-            [firstChecker setFrame:secondChecker.frame];
-            [secondChecker setFrame:tempRect];
+            CGRect tempRect = self.randomChecker.frame;
+            [self.randomChecker setFrame:self.randomChecker.frame];
+            [self.randomChecker setFrame:tempRect];
 
-            [self.field bringSubviewToFront:firstChecker];
-            [self.field bringSubviewToFront:secondChecker];
+            [self.field bringSubviewToFront:self.randomChecker];
+            [self.field bringSubviewToFront:self.randomChecker];
         }];
     }
 }
