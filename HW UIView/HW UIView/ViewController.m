@@ -101,7 +101,7 @@
         [self drawColor:color];
 
     } else if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
-        color = [UIColor blackColor];
+        color = [UIColor yellowColor];
         [self drawColor:color];
     }
     
