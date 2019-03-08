@@ -126,6 +126,7 @@
             [self.field bringSubviewToFront:secondChecker];
         }
     }];
+    
 }
 
 @end
