@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var field: UIView!
@@ -22,21 +23,21 @@ class ViewController: UIViewController {
     override func willTransition(to newCollection: UITraitCollection,
                                  with coordinator: UIViewControllerTransitionCoordinator) {
         
-        let randomColor = UIColor(red: CGFloat(Float(arc4random()) / Float(UINT32_MAX)),
-                                  green: CGFloat(Float(arc4random()) / Float(UINT32_MAX)),
-                                  blue: CGFloat(Float(arc4random()) / Float(UINT32_MAX)),
-                                  alpha: 1)
+        let randomColor =  UIColor(red: CGFloat.random(in: 0...1),
+                                    green: CGFloat.random(in: 0...1),
+                                    blue: CGFloat.random(in: 0...1),
+                                    alpha: 1)
 
         for cell in cells {
             if cell.backgroundColor != UIColor.white {
-            cell.backgroundColor = randomColor
+                cell.backgroundColor = randomColor
             }
         }
         
+        let randomCountChange = (Int.random(in: 0...Int.max) % self.checkers.count / 2) + 1
+
         UIView.animate(withDuration: 1) {
             
-            let randomCountChange = (Int.random(in: 0...Int.max) % self.checkers.count / 2) + 1
-
             for _ in 0...randomCountChange {
                 let firstChecker = self.checkers[Int.random(in: 0..<self.checkers.count)]
                 let secondChecker = self.checkers[Int.random(in: 0..<self.checkers.count)]
