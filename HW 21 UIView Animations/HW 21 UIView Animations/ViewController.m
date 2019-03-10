@@ -96,9 +96,7 @@
     
     NSArray *manImages = [NSArray arrayWithObjects:manImage1, manImage2, manImage3, manImage4, manImage5, manImage6, manImage7, manImage8, manImage9, manImage10, manImage11, nil];
 
-    CGFloat manImageWidth = 300;
-    CGFloat manImageHeight = 300;
-    UIImageView *manImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0 - manImageHeight, 400, manImageWidth, manImageHeight)];
+    UIImageView *manImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0 - 200, 400, 300, 300)];
     
     [self.view addSubview:manImageView];
     manImageView.animationImages = manImages;
@@ -123,30 +121,26 @@
 
     
     //girl images
-    UIImage *girlImage1 = [UIImage imageNamed:@"girl1.gif"];
-    UIImage *girlImage2 = [UIImage imageNamed:@"girl2.gif"];
-    UIImage *girlImage3 = [UIImage imageNamed:@"girl3.gif"];
-    UIImage *girlImage4 = [UIImage imageNamed:@"girl4.gif"];
-    UIImage *girlImage5 = [UIImage imageNamed:@"girl5.gif"];
-    UIImage *girlImage6 = [UIImage imageNamed:@"girl6.gif"];
-    UIImage *girlImage7 = [UIImage imageNamed:@"girl7.gif"];
-    UIImage *girlImage8 = [UIImage imageNamed:@"girl8.gif"];
-    UIImage *girlImage9 = [UIImage imageNamed:@"girl9.gif"];
-    UIImage *girlImage10 = [UIImage imageNamed:@"girl10.gif"];
-    UIImage *girlImage11 = [UIImage imageNamed:@"girl11.gif"];
-    UIImage *girlImage12 = [UIImage imageNamed:@"girl12.gif"];
-    UIImage *girlImage13 = [UIImage imageNamed:@"girl13.gif"];
-    UIImage *girlImage14 = [UIImage imageNamed:@"girl14.gif"];
+    NSArray *girlImages = @[[UIImage imageNamed:@"girl1.gif"],
+                            [UIImage imageNamed:@"girl2.gif"],
+                            [UIImage imageNamed:@"girl3.gif"],
+                            [UIImage imageNamed:@"girl4.gif"],
+                            [UIImage imageNamed:@"girl5.gif"],
+                            [UIImage imageNamed:@"girl6.gif"],
+                            [UIImage imageNamed:@"girl7.gif"],
+                            [UIImage imageNamed:@"girl8.gif"],
+                            [UIImage imageNamed:@"girl9.gif"],
+                            [UIImage imageNamed:@"girl10.gif"],
+                            [UIImage imageNamed:@"girl11.gif"],
+                            [UIImage imageNamed:@"girl12.gif"],
+                            [UIImage imageNamed:@"girl13.gif"],
+                            [UIImage imageNamed:@"girl14.gif"]];
 
-    NSArray *girlImages = [NSArray arrayWithObjects:girlImage1, girlImage2, girlImage3, girlImage4, girlImage5, girlImage6,
-                           girlImage7, girlImage8, girlImage9, girlImage10, girlImage11, girlImage12, girlImage13, girlImage14, nil];
-
-    CGFloat girlImageWidth = 300;
-    CGFloat girlImageHeight = 300;
-    UIImageView *girlImageView = [[UIImageView alloc] initWithFrame:CGRectMake(maxWidth, 400, girlImageWidth, girlImageHeight)];
+    UIImageView *girlImageView = [[UIImageView alloc] initWithFrame:CGRectMake(maxWidth, 400, 300, 300)];
     
     [self.view addSubview:girlImageView];
     girlImageView.animationImages = girlImages;
+    girlImageView.animationDuration = [girlImages count] / 10;
     [girlImageView startAnimating];
     
     [UIView animateWithDuration:5
