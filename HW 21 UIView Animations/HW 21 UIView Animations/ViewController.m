@@ -96,7 +96,9 @@
     
     NSArray *manImages = [NSArray arrayWithObjects:manImage1, manImage2, manImage3, manImage4, manImage5, manImage6, manImage7, manImage8, manImage9, manImage10, manImage11, nil];
 
-    UIImageView *manImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0 - 200, 400, 300, 300)];
+    CGFloat manImageWidth = 300;
+    CGFloat manImageHeight = 300;
+    UIImageView *manImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0 - manImageHeight, 400, manImageWidth, manImageHeight)];
     
     [self.view addSubview:manImageView];
     manImageView.animationImages = manImages;
@@ -139,7 +141,9 @@
     NSArray *girlImages = [NSArray arrayWithObjects:girlImage1, girlImage2, girlImage3, girlImage4, girlImage5, girlImage6,
                            girlImage7, girlImage8, girlImage9, girlImage10, girlImage11, girlImage12, girlImage13, girlImage14, nil];
 
-    UIImageView *girlImageView = [[UIImageView alloc] initWithFrame:CGRectMake(maxWidth, 400, 300, 300)];
+    CGFloat girlImageWidth = 300;
+    CGFloat girlImageHeight = 300;
+    UIImageView *girlImageView = [[UIImageView alloc] initWithFrame:CGRectMake(maxWidth, 400, girlImageWidth, girlImageHeight)];
     
     [self.view addSubview:girlImageView];
     girlImageView.animationImages = girlImages;
