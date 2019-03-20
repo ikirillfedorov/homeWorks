@@ -18,46 +18,43 @@
 
 import UIKit
 
-var chessBoard: UIView!
-var checker = UIView()
-var touchOffSet = CGPoint()
-var checkers = [UIView]()
-
-func cellIsFree(cell: UIView, selectedChecker: UIView, chessBoard: UIView) -> Bool {
-    var returnedValue = true
-    for checker in checkers {
-        if selectedChecker == checker {
-            continue
-        }
-        if cell.point(inside: chessBoard.convert(checker.center, to: cell), with: nil) {
-            returnedValue = false
-        }
-    }
-    return returnedValue
-}
-
-func findNearesBlackCell(blackCells: [UIView], checker: UIView, chessBoard: UIView) -> UIView {
-    var delta = Float.greatestFiniteMagnitude
-    var nearestCell = UIView()
-    
-    for blackCell in blackCells {
-        let deltaX = fabsf(Float(blackCell.center.x - checker.center.x))
-        let deltaY = fabsf(Float(blackCell.center.y - checker.center.y))
-        
-        if delta > sqrtf(Float(deltaX * deltaX + deltaY * deltaY)) &&
-            cellIsFree(cell: blackCell, selectedChecker: checker, chessBoard: chessBoard) {
-            nearestCell = blackCell
-            delta = sqrtf(deltaX * deltaX + deltaY * deltaY)
-        }
-        
-    }
-    return nearestCell
-}
-
-
 class ViewController: UIViewController {
     
     var blackCells = [UIView]()
+    var chessBoard: UIView!
+    var checker = UIView()
+    var touchOffSet = CGPoint()
+    var checkers = [UIView]()
+    
+    func cellIsFree(cell: UIView, selectedChecker: UIView, chessBoard: UIView) -> Bool {
+        for checker in checkers {
+            if selectedChecker == checker {
+                continue
+            }
+            if cell.point(inside: chessBoard.convert(checker.center, to: cell), with: nil) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func findNearesBlackCell(blackCells: [UIView], checker: UIView, chessBoard: UIView) -> UIView {
+        var delta = Float.greatestFiniteMagnitude
+        var nearestCell: UIView!
+        
+        for blackCell in blackCells {
+            let deltaX = fabsf(Float(blackCell.center.x - checker.center.x))
+            let deltaY = fabsf(Float(blackCell.center.y - checker.center.y))
+            
+            if delta > sqrtf(Float(deltaX * deltaX + deltaY * deltaY)) &&
+                cellIsFree(cell: blackCell, selectedChecker: checker, chessBoard: chessBoard) {
+                nearestCell = blackCell
+                delta = sqrtf(deltaX * deltaX + deltaY * deltaY)
+            }
+        }
+        return nearestCell
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +66,7 @@ class ViewController: UIViewController {
         let multiplier = 0.7;
         let indentInCell = cellSize * CGFloat((1 - multiplier) / 2);
         let checkerSize = cellSize * CGFloat(multiplier)
+        let rangeWithOutCheckers = 3...4
         
         chessBoard = UIView(frame: CGRect(x: self.view.center.x - minSide / 2, y: self.view.center.y - minSide / 2, width: minSide, height: minSide))
         let chessBoardImage = UIImage(named: "chessBoard.jpg")
@@ -81,32 +79,30 @@ class ViewController: UIViewController {
         
         for i in 0..<8 {
             for j in 0..<8 {
-                if ((i + j) % 2 != 0) {
+                guard ((i + j) % 2 != 0) else { continue }
+                let blackCell = UIView(frame: CGRect(x: cellSize * CGFloat(i),
+                                                     y: cellSize * CGFloat(j),
+                                                     width: cellSize,
+                                                     height: cellSize))
+                
+                let blackCellImag = UIImage(named: "blackCell.jpg")
+                if blackCellImag != nil {
+                    blackCell.backgroundColor = UIColor(patternImage: blackCellImag!)
+                }
+                chessBoard.addSubview(blackCell)
+                blackCells.append(blackCell)
+                
+                if (j < rangeWithOutCheckers.lowerBound || j > rangeWithOutCheckers.upperBound) {
+                    let checker = UIView.init(frame: CGRect(x: cellSize * CGFloat(i) + indentInCell,
+                                                            y: cellSize * CGFloat(j) + indentInCell,
+                                                            width: checkerSize,
+                                                            height: checkerSize))
                     
-                    let blackCell = UIView(frame: CGRect(x: cellSize * CGFloat(i),
-                                                         y: cellSize * CGFloat(j),
-                                                         width: cellSize,
-                                                         height: cellSize))
-                    
-                    let blackCellImag = UIImage(named: "blackCell.jpg")
-                    if blackCellImag != nil {
-                        blackCell.backgroundColor = UIColor(patternImage: blackCellImag!)
-                    }
-                    chessBoard.addSubview(blackCell)
-                    blackCells.append(blackCell)
-                    
-                    if (j < 3 || j > 4) {
-                        let checker = UIView.init(frame: CGRect(x: cellSize * CGFloat(i) + indentInCell,
-                                                                y: cellSize * CGFloat(j) + indentInCell,
-                                                                width: checkerSize,
-                                                                height: checkerSize))
-                        
-                        checker.backgroundColor = j < 3 ? .white : .red
-                        checker.layer.cornerRadius = checker.frame.width / 2
-                        checker.tag = 1
-                        chessBoard.addSubview(checker)
-                        checkers.append(checker)
-                    }
+                    checker.backgroundColor = j < rangeWithOutCheckers.lowerBound ? .white : .red
+                    checker.layer.cornerRadius = checker.frame.width / 2
+                    checker.tag = 1
+                    chessBoard.addSubview(checker)
+                    checkers.append(checker)
                 }
             }
         }
@@ -116,20 +112,24 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.randomElement()
-        let pointOnChessBoard = touch?.location(in: chessBoard)
-        let selectedView = chessBoard.hitTest(pointOnChessBoard!, with: event)
+        guard let pointOnChessBoard = touch?.location(in: chessBoard) else {
+            return
+        }
+        let selectedView = chessBoard.hitTest(pointOnChessBoard, with: event)
         
         if selectedView != nil && selectedView?.tag == 1 {
-            checker = selectedView!
-            chessBoard.bringSubviewToFront(checker)
+            self.checker = selectedView!
+            chessBoard.bringSubviewToFront(self.checker)
             
-            let touchPoint = touch!.location(in: checker)
-            touchOffSet = CGPoint(x: (checker.bounds.midX) - (touchPoint.x),
-                                  y: (checker.bounds.midY) - (touchPoint.y))
-            
-            UIView.animate(withDuration: 0.3) {
-                checker.transform = checker.transform.scaledBy(x: 1.3, y: 1.3)
-                checker.alpha = 0.7
+            if touch != nil {
+                let touchPoint = touch!.location(in: self.checker)
+                touchOffSet = CGPoint(x: (self.checker.bounds.midX) - (touchPoint.x),
+                                      y: (self.checker.bounds.midY) - (touchPoint.y))
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.checker.transform = self.checker.transform.scaledBy(x: 1.3, y: 1.3)
+                    self.checker.alpha = 0.7
+                }
             }
         }
     }
@@ -137,18 +137,21 @@ class ViewController: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.randomElement()
         let pointOnChessBoard = touch?.location(in: chessBoard)
-        
-        let newPoint = CGPoint(x: (pointOnChessBoard?.x)! + touchOffSet.x, y: (pointOnChessBoard?.y)! + touchOffSet.y)
-        checker.center = newPoint
+        if pointOnChessBoard != nil {
+            let newPoint = CGPoint(x: pointOnChessBoard!.x + touchOffSet.x, y: pointOnChessBoard!.y + touchOffSet.y)
+            self.checker.center = newPoint
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let nearestCell = findNearesBlackCell(blackCells: blackCells, checker: checker, chessBoard: chessBoard)
-        checker.center = nearestCell.center
+        let nearestCell = findNearesBlackCell(blackCells: blackCells, checker: self.checker, chessBoard: chessBoard)
+        UIView.animate(withDuration: 0.3) {
+            self.checker.center = nearestCell.center
+        }
         
         UIView.animate(withDuration: 0.3) {
-            checker.transform = CGAffineTransform.identity
-            checker.alpha = 1
+            self.checker.transform = CGAffineTransform.identity
+            self.checker.alpha = 1
         }
     }
     
