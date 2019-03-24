@@ -36,7 +36,7 @@
                                                                                 CGRectGetMidY(self.view.bounds) - 100,
                                                                                 200,
                                                                                 200)];
-    
+    womanImageView.image = [UIImage imageNamed:@"frame_00_delay-0.04s.gif"] ;
     womanImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin |
                                       UIViewAutoresizingFlexibleLeftMargin |
                                       UIViewAutoresizingFlexibleTopMargin |
@@ -153,7 +153,7 @@
 
 - (void) handleDoubleTapDoubleTouch:(UITapGestureRecognizer *) doubleTapDoubleTouchGesture {
     NSLog(@"Handle Double Tap Double Touch: %@", NSStringFromCGPoint([doubleTapDoubleTouchGesture locationInView:self.view]));
-    [self.womanView.layer removeAllAnimations];
+    [self.womanView stopAnimating];
 }
 
 //Супермен
