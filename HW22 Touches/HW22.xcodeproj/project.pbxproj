@@ -14,8 +14,8 @@
 		5C133D0D223E12080088F4DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C133D0B223E12080088F4DA /* LaunchScreen.storyboard */; };
 		5C133D18223E12080088F4DA /* HW22Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C133D17223E12080088F4DA /* HW22Tests.swift */; };
 		5C133D23223E12080088F4DA /* HW22UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C133D22223E12080088F4DA /* HW22UITests.swift */; };
-		5C70BC2E223E758200581073 /* chessBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C70BC2C223E758200581073 /* chessBoard.jpg */; };
-		5C70BC2F223E758200581073 /* blackCell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C70BC2D223E758200581073 /* blackCell.jpg */; };
+		5C9F10202247F42900FCDA6F /* blackCell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9F101E2247F42900FCDA6F /* blackCell.jpg */; };
+		5C9F10212247F42900FCDA6F /* chessBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C9F101F2247F42900FCDA6F /* chessBoard.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +49,8 @@
 		5C133D1E223E12080088F4DA /* HW22UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW22UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C133D22223E12080088F4DA /* HW22UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW22UITests.swift; sourceTree = "<group>"; };
 		5C133D24223E12080088F4DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C70BC2C223E758200581073 /* chessBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chessBoard.jpg; path = ../../../chessBoard.jpg; sourceTree = "<group>"; };
-		5C70BC2D223E758200581073 /* blackCell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = blackCell.jpg; path = ../../../blackCell.jpg; sourceTree = "<group>"; };
+		5C9F101E2247F42900FCDA6F /* blackCell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackCell.jpg; sourceTree = "<group>"; };
+		5C9F101F2247F42900FCDA6F /* chessBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chessBoard.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +133,8 @@
 		5C133D30223E41C40088F4DA /* images */ = {
 			isa = PBXGroup;
 			children = (
-				5C70BC2D223E758200581073 /* blackCell.jpg */,
-				5C70BC2C223E758200581073 /* chessBoard.jpg */,
+				5C9F101E2247F42900FCDA6F /* blackCell.jpg */,
+				5C9F101F2247F42900FCDA6F /* chessBoard.jpg */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -244,10 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C133D0D223E12080088F4DA /* LaunchScreen.storyboard in Resources */,
+				5C9F10202247F42900FCDA6F /* blackCell.jpg in Resources */,
 				5C133D0A223E12080088F4DA /* Assets.xcassets in Resources */,
+				5C9F10212247F42900FCDA6F /* chessBoard.jpg in Resources */,
 				5C133D08223E12070088F4DA /* Main.storyboard in Resources */,
-				5C70BC2E223E758200581073 /* chessBoard.jpg in Resources */,
-				5C70BC2F223E758200581073 /* blackCell.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
