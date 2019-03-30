@@ -55,40 +55,23 @@ class ViewController: UIViewController {
         return nearestCell
     }
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.view.backgroundColor = .lightGray
-        let minSide = min(self.view.frame.width, self.view.frame.height)
-        let cellSize = minSide / 8
-        let multiplier = 0.7;
-        let indentInCell = cellSize * CGFloat((1 - multiplier) / 2);
-        let checkerSize = cellSize * CGFloat(multiplier)
+    fileprivate func configureChessBoard(_ cellsInLine: Int, _ cellSize: CGFloat, _ indentInCell: CGFloat, _ checkerSize: CGFloat) {
         let rangeWithOutCheckers = 3...4
-        
-        chessBoard = UIView(frame: CGRect(x: self.view.center.x - minSide / 2, y: self.view.center.y - minSide / 2, width: minSide, height: minSide))
-        let chessBoardImage = UIImage(named: "chessBoard.jpg")
-        if chessBoardImage != nil {
-            chessBoard.backgroundColor = UIColor(patternImage: chessBoardImage!)
-        }
-        self.view.addSubview(chessBoard)
-        
-        chessBoard.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin]
-        
-        for i in 0..<8 {
-            for j in 0..<8 {
-                guard ((i + j) % 2 != 0) else { continue }
+        let blackCellImage = UIImage(named: "blackCell.jpg")
+        for i in 0..<cellsInLine {
+            for j in 0..<cellsInLine {
+                guard i % 2 != j % 2 else { continue }
                 let blackCell = UIView(frame: CGRect(x: cellSize * CGFloat(i),
                                                      y: cellSize * CGFloat(j),
                                                      width: cellSize,
                                                      height: cellSize))
                 
-                let blackCellImag = UIImage(named: "blackCell.jpg")
-                if blackCellImag != nil {
-                    blackCell.backgroundColor = UIColor(patternImage: blackCellImag!)
+                if let image = blackCellImage {
+                    blackCell.backgroundColor = UIColor(patternImage: image)
+                } else {
+                    blackCell.backgroundColor = .black
                 }
+                
                 chessBoard.addSubview(blackCell)
                 blackCells.append(blackCell)
                 
@@ -108,48 +91,67 @@ class ViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.backgroundColor = .lightGray
+        let minSide = min(self.view.frame.width, self.view.frame.height)
+        let cellsInLine = 8
+        let cellSize = minSide / CGFloat(cellsInLine)
+        let multiplier = 0.7;
+        let indentInCell = cellSize * CGFloat((1 - multiplier) / 2);
+        let checkerSize = cellSize * CGFloat(multiplier)
+        
+        chessBoard = UIView(frame: CGRect(x: self.view.center.x - minSide / 2, y: self.view.center.y - minSide / 2, width: minSide, height: minSide))
+        let chessBoardImage = UIImage(named: "chessBoard.jpg")
+        if chessBoardImage != nil {
+            chessBoard.backgroundColor = UIColor(patternImage: chessBoardImage!)
+        }
+        self.view.addSubview(chessBoard)
+        
+        chessBoard.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin]
+        
+        configureChessBoard(cellsInLine, cellSize, indentInCell, checkerSize)
+    }
+    
     // touches methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch = touches.randomElement()
-        guard let pointOnChessBoard = touch?.location(in: chessBoard) else {
+        guard let touch = touches.randomElement() else {
             return
         }
+        let pointOnChessBoard = touch.location(in: chessBoard)
         let selectedView = chessBoard.hitTest(pointOnChessBoard, with: event)
         
-        if selectedView != nil && selectedView?.tag == 1 {
-            self.checker = selectedView!
-            chessBoard.bringSubviewToFront(self.checker)
+        if let view = selectedView, view.tag == 1 {
+            checker = view
+            chessBoard.bringSubviewToFront(checker)
             
-            if touch != nil {
-                let touchPoint = touch!.location(in: self.checker)
-                touchOffSet = CGPoint(x: (self.checker.bounds.midX) - (touchPoint.x),
-                                      y: (self.checker.bounds.midY) - (touchPoint.y))
-                
-                UIView.animate(withDuration: 0.3) {
-                    self.checker.transform = self.checker.transform.scaledBy(x: 1.3, y: 1.3)
-                    self.checker.alpha = 0.7
-                }
+            let touchPoint = touch.location(in: checker)
+            touchOffSet = CGPoint(x: (checker.bounds.midX) - (touchPoint.x),
+                                  y: (checker.bounds.midY) - (touchPoint.y))
+            
+            UIView.animate(withDuration: 0.3) {
+                self.checker.transform = self.checker.transform.scaledBy(x: 1.3, y: 1.3)
+                self.checker.alpha = 0.7
             }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.randomElement()
-        let pointOnChessBoard = touch?.location(in: chessBoard)
-        if pointOnChessBoard != nil {
-            let newPoint = CGPoint(x: pointOnChessBoard!.x + touchOffSet.x, y: pointOnChessBoard!.y + touchOffSet.y)
-            self.checker.center = newPoint
+        guard let touch = touches.randomElement() else {
+            return
         }
+        let pointOnChessBoard = touch.location(in: chessBoard)
+        let newPoint = CGPoint(x: pointOnChessBoard.x + touchOffSet.x, y: pointOnChessBoard.y + touchOffSet.y)
+        self.checker.center = newPoint
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let nearestCell = findNearesBlackCell(blackCells: blackCells, checker: self.checker, chessBoard: chessBoard)
+        let nearestCell = findNearesBlackCell(blackCells: blackCells, checker: checker, chessBoard: chessBoard)
         UIView.animate(withDuration: 0.3) {
             self.checker.center = nearestCell.center
-        }
-        
-        UIView.animate(withDuration: 0.3) {
             self.checker.transform = CGAffineTransform.identity
             self.checker.alpha = 1
         }
