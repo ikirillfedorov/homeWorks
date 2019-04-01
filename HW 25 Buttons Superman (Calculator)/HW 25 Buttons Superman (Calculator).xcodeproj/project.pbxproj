@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5CE3A3DE22509A8900F1C862 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3A3DD22509A8900F1C862 /* AppDelegate.swift */; };
+		5CE3A3E022509A8900F1C862 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3A3DF22509A8900F1C862 /* ViewController.swift */; };
+		5CE3A3E322509A8900F1C862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE3A3E122509A8900F1C862 /* Main.storyboard */; };
+		5CE3A3E522509A8A00F1C862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE3A3E422509A8A00F1C862 /* Assets.xcassets */; };
+		5CE3A3E822509A8A00F1C862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE3A3E622509A8A00F1C862 /* LaunchScreen.storyboard */; };
+		5CE3A3F322509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3A3F222509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_Tests.swift */; };
+		5CE3A3FE22509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3A3FD22509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CE3A3EF22509A8A00F1C862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CE3A3D222509A8900F1C862 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CE3A3D922509A8900F1C862;
+			remoteInfo = "HW 25 Buttons Superman (Calculator)";
+		};
+		5CE3A3FA22509A8A00F1C862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CE3A3D222509A8900F1C862 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CE3A3D922509A8900F1C862;
+			remoteInfo = "HW 25 Buttons Superman (Calculator)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5CE3A3DA22509A8900F1C862 /* HW 25 Buttons Superman (Calculator).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW 25 Buttons Superman (Calculator).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CE3A3DD22509A8900F1C862 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5CE3A3DF22509A8900F1C862 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5CE3A3E222509A8900F1C862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5CE3A3E422509A8A00F1C862 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5CE3A3E722509A8A00F1C862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5CE3A3E922509A8A00F1C862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CE3A3EE22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HW 25 Buttons Superman (Calculator)Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CE3A3F222509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW_25_Buttons_Superman__Calculator_Tests.swift; sourceTree = "<group>"; };
+		5CE3A3F422509A8A00F1C862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CE3A3F922509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HW 25 Buttons Superman (Calculator)UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CE3A3FD22509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW_25_Buttons_Superman__Calculator_UITests.swift; sourceTree = "<group>"; };
+		5CE3A3FF22509A8A00F1C862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CE3A3D722509A8900F1C862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE3A3EB22509A8A00F1C862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE3A3F622509A8A00F1C862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5CE3A3D122509A8900F1C862 = {
+			isa = PBXGroup;
+			children = (
+				5CE3A3DC22509A8900F1C862 /* HW 25 Buttons Superman (Calculator) */,
+				5CE3A3F122509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests */,
+				5CE3A3FC22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests */,
+				5CE3A3DB22509A8900F1C862 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5CE3A3DB22509A8900F1C862 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CE3A3DA22509A8900F1C862 /* HW 25 Buttons Superman (Calculator).app */,
+				5CE3A3EE22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests.xctest */,
+				5CE3A3F922509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CE3A3DC22509A8900F1C862 /* HW 25 Buttons Superman (Calculator) */ = {
+			isa = PBXGroup;
+			children = (
+				5CE3A3DD22509A8900F1C862 /* AppDelegate.swift */,
+				5CE3A3DF22509A8900F1C862 /* ViewController.swift */,
+				5CE3A3E122509A8900F1C862 /* Main.storyboard */,
+				5CE3A3E422509A8A00F1C862 /* Assets.xcassets */,
+				5CE3A3E622509A8A00F1C862 /* LaunchScreen.storyboard */,
+				5CE3A3E922509A8A00F1C862 /* Info.plist */,
+			);
+			path = "HW 25 Buttons Superman (Calculator)";
+			sourceTree = "<group>";
+		};
+		5CE3A3F122509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5CE3A3F222509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_Tests.swift */,
+				5CE3A3F422509A8A00F1C862 /* Info.plist */,
+			);
+			path = "HW 25 Buttons Superman (Calculator)Tests";
+			sourceTree = "<group>";
+		};
+		5CE3A3FC22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests */ = {
+			isa = PBXGroup;
+			children = (
+				5CE3A3FD22509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_UITests.swift */,
+				5CE3A3FF22509A8A00F1C862 /* Info.plist */,
+			);
+			path = "HW 25 Buttons Superman (Calculator)UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CE3A3D922509A8900F1C862 /* HW 25 Buttons Superman (Calculator) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CE3A40222509A8A00F1C862 /* Build configuration list for PBXNativeTarget "HW 25 Buttons Superman (Calculator)" */;
+			buildPhases = (
+				5CE3A3D622509A8900F1C862 /* Sources */,
+				5CE3A3D722509A8900F1C862 /* Frameworks */,
+				5CE3A3D822509A8900F1C862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HW 25 Buttons Superman (Calculator)";
+			productName = "HW 25 Buttons Superman (Calculator)";
+			productReference = 5CE3A3DA22509A8900F1C862 /* HW 25 Buttons Superman (Calculator).app */;
+			productType = "com.apple.product-type.application";
+		};
+		5CE3A3ED22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CE3A40522509A8A00F1C862 /* Build configuration list for PBXNativeTarget "HW 25 Buttons Superman (Calculator)Tests" */;
+			buildPhases = (
+				5CE3A3EA22509A8A00F1C862 /* Sources */,
+				5CE3A3EB22509A8A00F1C862 /* Frameworks */,
+				5CE3A3EC22509A8A00F1C862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CE3A3F022509A8A00F1C862 /* PBXTargetDependency */,
+			);
+			name = "HW 25 Buttons Superman (Calculator)Tests";
+			productName = "HW 25 Buttons Superman (Calculator)Tests";
+			productReference = 5CE3A3EE22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5CE3A3F822509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CE3A40822509A8A00F1C862 /* Build configuration list for PBXNativeTarget "HW 25 Buttons Superman (Calculator)UITests" */;
+			buildPhases = (
+				5CE3A3F522509A8A00F1C862 /* Sources */,
+				5CE3A3F622509A8A00F1C862 /* Frameworks */,
+				5CE3A3F722509A8A00F1C862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CE3A3FB22509A8A00F1C862 /* PBXTargetDependency */,
+			);
+			name = "HW 25 Buttons Superman (Calculator)UITests";
+			productName = "HW 25 Buttons Superman (Calculator)UITests";
+			productReference = 5CE3A3F922509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5CE3A3D222509A8900F1C862 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Kirill Fedorov";
+				TargetAttributes = {
+					5CE3A3D922509A8900F1C862 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					5CE3A3ED22509A8A00F1C862 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 5CE3A3D922509A8900F1C862;
+					};
+					5CE3A3F822509A8A00F1C862 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 5CE3A3D922509A8900F1C862;
+					};
+				};
+			};
+			buildConfigurationList = 5CE3A3D522509A8900F1C862 /* Build configuration list for PBXProject "HW 25 Buttons Superman (Calculator)" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5CE3A3D122509A8900F1C862;
+			productRefGroup = 5CE3A3DB22509A8900F1C862 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CE3A3D922509A8900F1C862 /* HW 25 Buttons Superman (Calculator) */,
+				5CE3A3ED22509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)Tests */,
+				5CE3A3F822509A8A00F1C862 /* HW 25 Buttons Superman (Calculator)UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CE3A3D822509A8900F1C862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CE3A3E822509A8A00F1C862 /* LaunchScreen.storyboard in Resources */,
+				5CE3A3E522509A8A00F1C862 /* Assets.xcassets in Resources */,
+				5CE3A3E322509A8900F1C862 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE3A3EC22509A8A00F1C862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE3A3F722509A8A00F1C862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CE3A3D622509A8900F1C862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CE3A3E022509A8900F1C862 /* ViewController.swift in Sources */,
+				5CE3A3DE22509A8900F1C862 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE3A3EA22509A8A00F1C862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CE3A3F322509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE3A3F522509A8A00F1C862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CE3A3FE22509A8A00F1C862 /* HW_25_Buttons_Superman__Calculator_UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CE3A3F022509A8A00F1C862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CE3A3D922509A8900F1C862 /* HW 25 Buttons Superman (Calculator) */;
+			targetProxy = 5CE3A3EF22509A8A00F1C862 /* PBXContainerItemProxy */;
+		};
+		5CE3A3FB22509A8A00F1C862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CE3A3D922509A8900F1C862 /* HW 25 Buttons Superman (Calculator) */;
+			targetProxy = 5CE3A3FA22509A8A00F1C862 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5CE3A3E122509A8900F1C862 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CE3A3E222509A8900F1C862 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5CE3A3E622509A8A00F1C862 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CE3A3E722509A8A00F1C862 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5CE3A40022509A8A00F1C862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5CE3A40122509A8A00F1C862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CE3A40322509A8A00F1C862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4K2VL2BQJM;
+				INFOPLIST_FILE = "HW 25 Buttons Superman (Calculator)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Kirill-Fedorov.HW-25-Buttons-Superman--Calculator-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CE3A40422509A8A00F1C862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4K2VL2BQJM;
+				INFOPLIST_FILE = "HW 25 Buttons Superman (Calculator)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Kirill-Fedorov.HW-25-Buttons-Superman--Calculator-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5CE3A40622509A8A00F1C862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4K2VL2BQJM;
+				INFOPLIST_FILE = "HW 25 Buttons Superman (Calculator)Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Kirill-Fedorov.HW-25-Buttons-Superman--Calculator-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW 25 Buttons Superman (Calculator).app/HW 25 Buttons Superman (Calculator)";
+			};
+			name = Debug;
+		};
+		5CE3A40722509A8A00F1C862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4K2VL2BQJM;
+				INFOPLIST_FILE = "HW 25 Buttons Superman (Calculator)Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Kirill-Fedorov.HW-25-Buttons-Superman--Calculator-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW 25 Buttons Superman (Calculator).app/HW 25 Buttons Superman (Calculator)";
+			};
+			name = Release;
+		};
+		5CE3A40922509A8A00F1C862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4K2VL2BQJM;
+				INFOPLIST_FILE = "HW 25 Buttons Superman (Calculator)UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Kirill-Fedorov.HW-25-Buttons-Superman--Calculator-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "HW 25 Buttons Superman (Calculator)";
+			};
+			name = Debug;
+		};
+		5CE3A40A22509A8A00F1C862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4K2VL2BQJM;
+				INFOPLIST_FILE = "HW 25 Buttons Superman (Calculator)UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Kirill-Fedorov.HW-25-Buttons-Superman--Calculator-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "HW 25 Buttons Superman (Calculator)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CE3A3D522509A8900F1C862 /* Build configuration list for PBXProject "HW 25 Buttons Superman (Calculator)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CE3A40022509A8A00F1C862 /* Debug */,
+				5CE3A40122509A8A00F1C862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CE3A40222509A8A00F1C862 /* Build configuration list for PBXNativeTarget "HW 25 Buttons Superman (Calculator)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CE3A40322509A8A00F1C862 /* Debug */,
+				5CE3A40422509A8A00F1C862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CE3A40522509A8A00F1C862 /* Build configuration list for PBXNativeTarget "HW 25 Buttons Superman (Calculator)Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CE3A40622509A8A00F1C862 /* Debug */,
+				5CE3A40722509A8A00F1C862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CE3A40822509A8A00F1C862 /* Build configuration list for PBXNativeTarget "HW 25 Buttons Superman (Calculator)UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CE3A40922509A8A00F1C862 /* Debug */,
+				5CE3A40A22509A8A00F1C862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5CE3A3D222509A8900F1C862 /* Project object */;
+}
