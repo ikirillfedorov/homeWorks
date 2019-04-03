@@ -8,97 +8,90 @@
 
 import UIKit
 
-protocol DrawingViewDelegate {
+protocol DrawingViewColorSource {
     
     var lastPoint:  CGPoint  { get set }
-    var redColor:   CGFloat  { get set }
-    var greenColor: CGFloat  { get set }
-    var blueColor:  CGFloat  { get set }
+    var redColorSaturation:   CGFloat  { get set }
+    var greenColorSaturation: CGFloat  { get set }
+    var blueColorSaturation:  CGFloat  { get set }
     var opacity:    CGFloat  { get set }
     var lineWidth:  CGFloat  { get set }
 }
 
 class DrawingView: UIImageView {
     
-    var delegate: DrawingViewDelegate! = nil
+    var delegate: DrawingViewColorSource! = nil
     
     // MARK: - Draw rect
     override func draw(_ rect: CGRect) {
+
         // Drawing code
     }
     // MARK: - Helpful functions
     
+    func makeColor() -> CGColor {
+        return UIColor(red: delegate.redColorSaturation, green: delegate.greenColorSaturation, blue: delegate.blueColorSaturation, alpha: 1).cgColor
+    }
+    
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
+        let color = makeColor()
+        let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height).integral
         
-        let color = UIColor.init(red: self.delegate.redColor,
-                                 green: self.delegate.greenColor,
-                                 blue: self.delegate.blueColor, alpha: 1).cgColor
+        UIGraphicsBeginImageContext(frame.size) // image begins
+        defer { UIGraphicsEndImageContext() } // image ends
+
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        image?.draw(in: imageRect)
         
-        var imageRect = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        imageRect = imageRect.integral
+        context.move(to: fromPoint)
+        context.addLine(to: toPoint)
         
-        UIGraphicsBeginImageContext(self.frame.size) // image begins
+        context.setLineCap(.round)
+        context.setLineWidth(delegate.lineWidth)
+        context.setStrokeColor(color)
+        context.setBlendMode(.normal)
+        context.strokePath()
         
-        let context = UIGraphicsGetCurrentContext()
-        self.image?.draw(in: imageRect)
-        
-        context?.move(to: fromPoint)
-        context?.addLine(to: toPoint)
-        
-        context?.setLineCap(.round)
-        context?.setLineWidth(self.delegate.lineWidth)
-        context?.setStrokeColor(color)
-        context?.setBlendMode(.normal)
-        context?.strokePath()
-        
-        self.image = UIGraphicsGetImageFromCurrentImageContext()
-        self.alpha = self.delegate.opacity
-        
-        UIGraphicsEndImageContext() // image ends
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        alpha = delegate.opacity
     }
     
     func merge(tempView: UIImageView, intoMainView mainView: UIImageView) {
         
         UIGraphicsBeginImageContext(mainView.frame.size) // image begins
+        defer { UIGraphicsEndImageContext() } // image ends
         
-        var imageRect = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height)
-        imageRect = imageRect.integral
+        let imageRect = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height).integral
         
         mainView.image?.draw(in: imageRect, blendMode: .normal, alpha: 1)
-        tempView.image?.draw(in: imageRect, blendMode: .normal, alpha: self.delegate.opacity)
+        tempView.image?.draw(in: imageRect, blendMode: .normal, alpha: delegate.opacity)
         mainView.image = UIGraphicsGetImageFromCurrentImageContext()
         
-        UIGraphicsEndImageContext() // image ends
         tempView.image = nil
     }
     
     func drawPreview() {
         
-        self.image = nil
+        image = nil
         
-        let color = UIColor.init(red: self.delegate.redColor,
-                                 green: self.delegate.greenColor,
-                                 blue: self.delegate.blueColor, alpha: 1).cgColor
+        let color = makeColor()
+        let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height).integral
         
-        var imageRect = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        imageRect = imageRect.integral
+        UIGraphicsBeginImageContext(frame.size) // image begins
+        defer { UIGraphicsEndImageContext() } // image ends
         
-        UIGraphicsBeginImageContext(self.frame.size) // image begins
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        image?.draw(in: imageRect)
         
-        let context = UIGraphicsGetCurrentContext()
-        self.image?.draw(in: imageRect)
+        context.move(to: CGPoint(x: bounds.midX, y: bounds.midY))
+        context.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY))
         
-        context?.move(to: CGPoint(x: self.bounds.midX, y: self.bounds.midY))
-        context?.addLine(to: CGPoint(x: self.bounds.midX, y: self.bounds.midY))
+        context.setLineCap(.round)
+        context.setLineWidth(delegate.lineWidth)
+        context.setStrokeColor(color)
+        context.strokePath()
         
-        context?.setLineCap(.round)
-        context?.setLineWidth(self.delegate.lineWidth)
-        context?.setStrokeColor(color)
-        context?.strokePath()
-        
-        self.image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext() // image ends
+        image = UIGraphicsGetImageFromCurrentImageContext()
     }
     
 }
