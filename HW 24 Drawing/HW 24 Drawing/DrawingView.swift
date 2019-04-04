@@ -56,9 +56,19 @@ class DrawingView: UIView {
         return result
     }
     
-    func drawStars(context: CGContext, centerX: CGFloat, centerY: CGFloat, radiusStar: CGFloat, vertexStarPoint: inout CGPoint, angle: Double) {
+    func drawStars(context: CGContext,
+                   centerX: CGFloat,
+                   centerY: CGFloat,
+                   radiusStar: CGFloat,
+                   vertexStarPoint: inout CGPoint,
+                   angle: Double) {
+        
         context.move(to: CGPoint(x: centerX, y: centerY - radiusStar))
         
+        context.setLineWidth(2.5)
+        context.setStrokeColor(randomCGColor())
+        context.setFillColor(randomCGColor())
+
         for tempI in 1..<6 {
             let i = (Double)(tempI)
             vertexStarPoint.x = radiusStar * (CGFloat)(sin(i * angle))
@@ -69,7 +79,13 @@ class DrawingView: UIView {
         context.fillPath()
     }
     
-    func drawLinesAndCirles(context: CGContext, centerX: CGFloat, centerY: CGFloat, radiusStar: CGFloat, vertexStarPoint: inout CGPoint, angle: Double) {
+    func drawLinesAndCirles(context: CGContext,
+                            centerX: CGFloat,
+                            centerY: CGFloat,
+                            radiusStar: CGFloat,
+                            vertexStarPoint: inout CGPoint,
+                            angle: Double) {
+        
         context.setFillColor(UIColor.blue.cgColor)
         context.move(to: CGPoint(x: centerX, y: centerY - radiusStar))
         
@@ -105,9 +121,6 @@ class DrawingView: UIView {
                 var vertexStarPoint = CGPoint()
                 let angle = (4.0 * Double.pi) / 5.0
                 
-                context.setLineWidth(2.5)
-                context.setStrokeColor(randomCGColor())
-                context.setFillColor(randomCGColor())
                 
                 // draw a stars
                 drawStars(context: context, centerX: centerX, centerY: centerY, radiusStar: radiusStar, vertexStarPoint: &vertexStarPoint, angle: angle)
