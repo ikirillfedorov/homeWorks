@@ -10,38 +10,40 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    enum operationTags: Int {
+        case divide = 11, multiply, minus, plus, equal
+    }
+    
     var numberFromLabel: Double = 0.0
     var secondNumber: Double = 0.0
     var operationTag = 0
     
     var isLabelEmpty = true
-    var isSecondNumberEmpty = true
     var isDecimal = false
     
-    var power:Double = 1.0
+    var digits = 1.0
+    
+    @IBOutlet weak var resultLabel: UILabel!
     
     func showResult() {
-        switch String(numberFromLabel) {
-        case let textFromLabel where textFromLabel.hasSuffix(".0"):
+        if String(numberFromLabel).hasSuffix(".0") {
             resultLabel.text = String(Int(numberFromLabel))
-        default:
+        } else {
             resultLabel.text = String(numberFromLabel)
         }
     }
-    
-    @IBOutlet weak var resultLabel: UILabel!
     
     @IBAction func inverse(_ sender: UIButton) {
         numberFromLabel = -numberFromLabel
         showResult()
     }
     
-    @IBAction func present(_ sender: UIButton) {
+    @IBAction func didPressPercentageButton(_ sender: UIButton) {
         numberFromLabel = numberFromLabel / 100 * secondNumber
         showResult()
     }
-
-    @IBAction func digitalButtons(_ sender: UIButton) {
+    
+    @IBAction func didPressNumberButton(_ sender: UIButton) {
         if isLabelEmpty {
             numberFromLabel = 0
             isLabelEmpty = false
@@ -50,50 +52,48 @@ class ViewController: UIViewController {
             numberFromLabel = numberFromLabel * 10 + Double(sender.tag)
             showResult()
         } else {
-            numberFromLabel = numberFromLabel + Double(sender.tag) / pow(10, power)
-            power += 1
+            numberFromLabel = numberFromLabel + Double(sender.tag) / pow(10, digits)
+            digits += 1
             showResult()
         }
     }
     
-    @IBAction func operationButtons(_ sender: UIButton) {
-        if !isLabelEmpty && isSecondNumberEmpty {
+    @IBAction func didPressOperationButton(_ sender: UIButton) {
+        if !isLabelEmpty {
             switch operationTag {
-            case 11:
+            case operationTags.divide.rawValue:
                 numberFromLabel = secondNumber / numberFromLabel
-            case 12:
+            case operationTags.multiply.rawValue:
                 numberFromLabel = secondNumber * numberFromLabel
-            case 13:
+            case operationTags.minus.rawValue:
                 numberFromLabel = secondNumber - numberFromLabel
-            case 14:
+            case operationTags.plus.rawValue:
                 numberFromLabel = secondNumber + numberFromLabel
-            default:
+            case operationTags.equal.rawValue:
                 showResult()
+            default:
+                break
             }
         }
         operationTag = sender.tag
         secondNumber = numberFromLabel
         isLabelEmpty = true
-        isSecondNumberEmpty = true
         showResult()
-        power = 1
+        digits = 1
         isDecimal = false
     }
     
-    @IBAction func decimalButton(_ sender: UIButton) {
-        if !isDecimal {
-            isDecimal = true
-        }
+    @IBAction func didPressDotButton(_ sender: UIButton) {
+        isDecimal = true
     }
     
-    @IBAction func clearButton(_ sender: UIButton) {
+    @IBAction func didPressClearButton(_ sender: UIButton) {
         numberFromLabel = 0.0
         secondNumber = 0.0
         operationTag = 0
         isLabelEmpty = true
-        isSecondNumberEmpty = true
         isDecimal = false
-        power = 1.0
+        digits = 1.0
         showResult()
     }
     
