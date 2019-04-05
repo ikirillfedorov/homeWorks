@@ -8,33 +8,24 @@
 
 import UIKit
 
-protocol DrawingViewColorSource {
+protocol DrawingViewDrawingParametersSource: class {
     
-    var lastPoint:  CGPoint  { get set }
-    var redColorSaturation:   CGFloat  { get set }
-    var greenColorSaturation: CGFloat  { get set }
-    var blueColorSaturation:  CGFloat  { get set }
-    var opacity:    CGFloat  { get set }
-    var lineWidth:  CGFloat  { get set }
+    var lastPoint: CGPoint { get }
+    var color: CGColor { get }
+    var opacity: CGFloat { get }
+    var lineWidth: CGFloat { get }
+    
 }
 
 class DrawingView: UIImageView {
     
-    var delegate: DrawingViewColorSource! = nil
+    weak var dataSource: DrawingViewDrawingParametersSource? = nil
     
-    // MARK: - Draw rect
-    override func draw(_ rect: CGRect) {
-
-        // Drawing code
-    }
     // MARK: - Helpful functions
     
-    func makeColor() -> CGColor {
-        return UIColor(red: delegate.redColorSaturation, green: delegate.greenColorSaturation, blue: delegate.blueColorSaturation, alpha: 1).cgColor
-    }
-    
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
-        let color = makeColor()
+        guard let dataSource = dataSource else { return }
+        let color = dataSource.color
         let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height).integral
         
         UIGraphicsBeginImageContext(frame.size) // image begins
@@ -47,34 +38,35 @@ class DrawingView: UIImageView {
         context.addLine(to: toPoint)
         
         context.setLineCap(.round)
-        context.setLineWidth(delegate.lineWidth)
+        context.setLineWidth(dataSource.lineWidth)
         context.setStrokeColor(color)
         context.setBlendMode(.normal)
         context.strokePath()
         
         image = UIGraphicsGetImageFromCurrentImageContext()
-        alpha = delegate.opacity
+        alpha = dataSource.opacity
     }
     
     func merge(tempView: UIImageView, intoMainView mainView: UIImageView) {
-        
+        guard let dataSource = dataSource else { return }
         UIGraphicsBeginImageContext(mainView.frame.size) // image begins
         defer { UIGraphicsEndImageContext() } // image ends
         
         let imageRect = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height).integral
         
         mainView.image?.draw(in: imageRect, blendMode: .normal, alpha: 1)
-        tempView.image?.draw(in: imageRect, blendMode: .normal, alpha: delegate.opacity)
+        tempView.image?.draw(in: imageRect, blendMode: .normal, alpha: dataSource.opacity)
         mainView.image = UIGraphicsGetImageFromCurrentImageContext()
         
         tempView.image = nil
     }
     
     func drawPreview() {
-        
+        guard let dataSource = dataSource else { return }
+
         image = nil
         
-        let color = makeColor()
+        let color = dataSource.color
         let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height).integral
         
         UIGraphicsBeginImageContext(frame.size) // image begins
@@ -87,7 +79,7 @@ class DrawingView: UIImageView {
         context.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY))
         
         context.setLineCap(.round)
-        context.setLineWidth(delegate.lineWidth)
+        context.setLineWidth(dataSource.lineWidth)
         context.setStrokeColor(color)
         context.strokePath()
         

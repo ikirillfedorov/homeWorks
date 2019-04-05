@@ -8,9 +8,6 @@
 
 import UIKit
 
-extension ViewController: DrawingViewColorSource {
-}
-
 class ViewController: UIViewController {
     
     var hasActiveSwipeAction = false
@@ -18,11 +15,6 @@ class ViewController: UIViewController {
     // MARK: - DrawingViewDelegate
     
     var lastPoint = CGPoint()
-    var redColorSaturation = CGFloat()
-    var greenColorSaturation = CGFloat()
-    var blueColorSaturation = CGFloat()
-    var opacity = CGFloat()
-    var lineWidth = CGFloat()
     
     // MARK: - IBOutlet properties
     
@@ -51,9 +43,9 @@ class ViewController: UIViewController {
         if let image = UIImage(named: "image.jpg") {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
-        mainDrawingView.delegate = self
-        tempDrawingView.delegate = self
-        viewBrush.delegate = self
+        mainDrawingView.dataSource = self
+        tempDrawingView.dataSource = self
+        viewBrush.dataSource = self
         
         refreshValues()
         
@@ -152,24 +144,31 @@ class ViewController: UIViewController {
     // MARK: - Refresh values
     
     func refreshValues() {
-        
-        redColorSaturation = CGFloat(redColorSlider.value)
-        redColorValue.text = "\((Int)(redColorSaturation * 255))"
-        
-        greenColorSaturation = CGFloat(greenColorSlider.value)
-        greenColorValue.text = "\((Int)(greenColorSaturation * 255))"
-        
-        blueColorSaturation = CGFloat(blueColorSlider.value)
-        blueColorValue.text = "\((Int)(blueColorSaturation * 255))"
-        
-        opacity = CGFloat(opacitySlider.value)
-        opacityValue.text = String(format: "%1.1f", opacity)
-        
-        lineWidth = CGFloat(brushSizeSlider.value * 100)
-        brushValue.text = String(format: "%1.1f", lineWidth)
+        redColorValue.text = "\(Int(redColorSlider.value * Float(255.0)))"
+        greenColorValue.text = "\(Int(greenColorSlider.value * Float(255.0)))"
+        blueColorValue.text = "\(Int(blueColorSlider.value * Float(255.0)))"
+        opacityValue.text = String(format: "%1.1f", opacitySlider.value)
+        brushValue.text = String(format: "%1.1f", brushSizeSlider.value)
         
         viewBrush.drawPreview()
     }
-    
 }
+
+extension ViewController: DrawingViewDrawingParametersSource {
+    var opacity: CGFloat {
+        return CGFloat(opacitySlider.value)
+    }
+    
+    var lineWidth: CGFloat {
+        return CGFloat(brushSizeSlider.value * 100)
+    }
+    
+    var color: CGColor {
+        return UIColor(red: CGFloat(redColorSlider.value),
+                       green: CGFloat(greenColorSlider.value),
+                       blue: CGFloat(blueColorSlider.value),
+                       alpha: CGFloat(opacitySlider.value)).cgColor
+    }
+}
+
 
