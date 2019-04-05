@@ -10,49 +10,55 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    enum operationTags: Int {
-        case divide = 11, multiply, minus, plus, equal
+    enum OperationTag: Int {
+        case divide = 11, multiply, minus, plus, equal, none
     }
     
-    var numberFromLabel: Double = 0.0
-    var secondNumber: Double = 0.0
-    var operationTag = 0
+    var resultNumber = 0.0
+    var operandNumber = 0.0
+    var operationTag = OperationTag.none
     
-    var isLabelEmpty = true
-    var isDecimal = false
+    var isLabelEmpty: Bool {
+        return resultLabel.text?.isEmpty ?? true
+    }
+//    var isDecimal = false
+
+    var isDecimal: Bool {
+        return operationTag != .none || resultLabel.text?.contains(".") ?? false
+    }
+
     
     var digits = 1.0
     
     @IBOutlet weak var resultLabel: UILabel!
     
     func showResult() {
-        if String(numberFromLabel).hasSuffix(".0") {
-            resultLabel.text = String(Int(numberFromLabel))
+        if String(resultNumber).hasSuffix(".0") {
+            resultLabel.text = String(Int(resultNumber))
         } else {
-            resultLabel.text = String(numberFromLabel)
+            resultLabel.text = String(resultNumber)
         }
     }
     
     @IBAction func inverse(_ sender: UIButton) {
-        numberFromLabel = -numberFromLabel
+        resultNumber = -resultNumber
         showResult()
     }
     
     @IBAction func didPressPercentageButton(_ sender: UIButton) {
-        numberFromLabel = numberFromLabel / 100 * secondNumber
+        resultNumber = resultNumber / 100 * operandNumber
         showResult()
     }
     
     @IBAction func didPressNumberButton(_ sender: UIButton) {
         if isLabelEmpty {
-            numberFromLabel = 0
-            isLabelEmpty = false
+            resultNumber = 0
         }
         if !isDecimal {
-            numberFromLabel = numberFromLabel * 10 + Double(sender.tag)
+            resultNumber = resultNumber * 10 + Double(sender.tag)
             showResult()
         } else {
-            numberFromLabel = numberFromLabel + Double(sender.tag) / pow(10, digits)
+            resultNumber = resultNumber + Double(sender.tag) / pow(10, digits)
             digits += 1
             showResult()
         }
@@ -61,45 +67,38 @@ class ViewController: UIViewController {
     @IBAction func didPressOperationButton(_ sender: UIButton) {
         if !isLabelEmpty {
             switch operationTag {
-            case operationTags.divide.rawValue:
-                numberFromLabel = secondNumber / numberFromLabel
-            case operationTags.multiply.rawValue:
-                numberFromLabel = secondNumber * numberFromLabel
-            case operationTags.minus.rawValue:
-                numberFromLabel = secondNumber - numberFromLabel
-            case operationTags.plus.rawValue:
-                numberFromLabel = secondNumber + numberFromLabel
-            case operationTags.equal.rawValue:
-                showResult()
+            case .divide:
+                resultNumber = operandNumber / resultNumber
+            case .multiply:
+                resultNumber = operandNumber * resultNumber
+            case .minus:
+                resultNumber = operandNumber - resultNumber
+            case .plus:
+                resultNumber = operandNumber + resultNumber
             default:
                 break
             }
         }
-        operationTag = sender.tag
-        secondNumber = numberFromLabel
-        isLabelEmpty = true
+        operationTag = OperationTag(rawValue: sender.tag) ?? .none
+        operandNumber = resultNumber
         showResult()
         digits = 1
-        isDecimal = false
+//        isDecimal = false
     }
     
     @IBAction func didPressDotButton(_ sender: UIButton) {
-        isDecimal = true
+        if !isDecimal {
+            resultLabel.text?.append(".")
+        }
     }
     
     @IBAction func didPressClearButton(_ sender: UIButton) {
-        numberFromLabel = 0.0
-        secondNumber = 0.0
-        operationTag = 0
-        isLabelEmpty = true
-        isDecimal = false
+        resultNumber = 0.0
+        operandNumber = 0.0
+        operationTag = .none
+//        isDecimal = false
         digits = 1.0
         showResult()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 
