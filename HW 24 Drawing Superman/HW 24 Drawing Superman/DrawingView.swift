@@ -26,13 +26,14 @@ class DrawingView: UIImageView {
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
         guard let dataSource = dataSource else { return }
         let color = dataSource.color
-        let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height).integral
+        let imageRect = makeImageRect(frame)
         
         UIGraphicsBeginImageContext(frame.size) // image begins
         defer { UIGraphicsEndImageContext() } // image ends
 
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        image?.draw(in: imageRect)
+        guard let context = UIGraphicsGetCurrentContext(),
+              let image = image else { return }
+        image.draw(in: imageRect)
         
         context.move(to: fromPoint)
         context.addLine(to: toPoint)
@@ -43,8 +44,12 @@ class DrawingView: UIImageView {
         context.setBlendMode(.normal)
         context.strokePath()
         
-        image = UIGraphicsGetImageFromCurrentImageContext()
+        self.image = UIGraphicsGetImageFromCurrentImageContext()
         alpha = dataSource.opacity
+    }
+    
+    private func makeImageRect(_ rect: CGRect) -> CGRect {
+        return CGRect(x: 0, y: 0, width: rect.width, height: rect.height).integral
     }
     
     func merge(tempView: UIImageView, intoMainView mainView: UIImageView) {
@@ -52,7 +57,7 @@ class DrawingView: UIImageView {
         UIGraphicsBeginImageContext(mainView.frame.size) // image begins
         defer { UIGraphicsEndImageContext() } // image ends
         
-        let imageRect = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height).integral
+        let imageRect = makeImageRect(mainView.frame)
         
         mainView.image?.draw(in: imageRect, blendMode: .normal, alpha: 1)
         tempView.image?.draw(in: imageRect, blendMode: .normal, alpha: dataSource.opacity)
@@ -67,7 +72,7 @@ class DrawingView: UIImageView {
         image = nil
         
         let color = dataSource.color
-        let imageRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height).integral
+        let imageRect = makeImageRect(frame)
         
         UIGraphicsBeginImageContext(frame.size) // image begins
         defer { UIGraphicsEndImageContext() } // image ends

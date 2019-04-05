@@ -88,28 +88,24 @@ class ViewController: UIViewController {
     
     // MARK: - Touches
     
-    func getTouch(from touches: Set<UITouch>) -> UITouch? {
-        if let touch = touches.first {
-            return touch
-        } else {
-            return nil
+    func getLocation(from touches: Set<UITouch>) -> CGPoint? {
+        var location: CGPoint? = nil
+        if let touch =  touches.first {
+            location = touch.location(in: tempDrawingView)
         }
+        return location
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hasActiveSwipeAction = false
-        
-        guard let touch = getTouch(from: touches) else { return }
-        lastPoint = touch.location(in: tempDrawingView)
+        lastPoint = getLocation(from: touches) ?? lastPoint
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         hasActiveSwipeAction = true
         
-        guard let touch = getTouch(from: touches) else { return }
-        let currentPoint = touch.location(in: tempDrawingView)
-        
+        guard let currentPoint = getLocation(from: touches) else { return }
         tempDrawingView.drawLine(from: lastPoint, to: currentPoint)
         lastPoint = currentPoint
     }
