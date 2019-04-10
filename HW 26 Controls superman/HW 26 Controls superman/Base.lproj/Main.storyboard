@@ -29,14 +29,14 @@
                                 <rect key="frame" x="184" y="754" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="scaleSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="by4-X0-WUp"/>
+                                    <action selector="startandStopScaleSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="by4-X0-WUp"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-x7-3qw">
                                 <rect key="frame" x="334" y="754" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="translationSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="ox2-a4-Eit"/>
+                                    <action selector="startAndStopTranslationSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="ox2-a4-Eit"/>
                                 </connections>
                             </switch>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K8M-be-uBb">
@@ -48,7 +48,7 @@
                                     <segment title="Jade"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changeHeroSegmentedControler:" destination="BYZ-38-t0r" eventType="valueChanged" id="hvV-Im-7kg"/>
+                                    <action selector="changeHeroSegmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="jer-dW-kwE"/>
                                 </connections>
                             </segmentedControl>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JME-nX-dfC">
@@ -92,7 +92,7 @@
                                 <rect key="frame" x="25" y="754" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="rotationSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="FU2-mM-CEi"/>
+                                    <action selector="startAndStopRotationSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="FU2-mM-CEi"/>
                                 </connections>
                             </switch>
                         </subviews>

@@ -15,11 +15,11 @@
 @property (weak, nonatomic) IBOutlet UISlider *speedSlider;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
 
-- (IBAction)changeHeroSegmentedControler:(UISegmentedControl *)sender;
+- (IBAction)changeHeroSegmentedControl:(UISegmentedControl *)sender;
 
-- (IBAction)rotationSwitch:(UISwitch *)sender;
-- (IBAction)scaleSwitch:(UISwitch *)sender;
-- (IBAction)translationSwitch:(UISwitch *)sender;
+- (IBAction)startAndStopRotationSwitch:(UISwitch *)sender;
+- (IBAction)startandStopScaleSwitch:(UISwitch *)sender;
+- (IBAction)startAndStopTranslationSwitch:(UISwitch *)sender;
 - (IBAction)speedSlider:(UISlider *)sender;
 
 @end
