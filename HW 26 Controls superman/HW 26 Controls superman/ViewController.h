@@ -18,7 +18,7 @@
 - (IBAction)changeHeroSegmentedControl:(UISegmentedControl *)sender;
 
 - (IBAction)didChangeRotationState:(UISwitch *)sender;
-- (IBAction)didChangeSscaleState:(UISwitch *)sender;
+- (IBAction)didChangeScaleState:(UISwitch *)sender;
 - (IBAction)didChangeTranslationState:(UISwitch *)sender;
 - (IBAction)speedSlider:(UISlider *)sender;
 

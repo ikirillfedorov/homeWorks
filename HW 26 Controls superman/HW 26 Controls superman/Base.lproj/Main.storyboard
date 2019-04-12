@@ -25,7 +25,7 @@
                                 <rect key="frame" x="184" y="754" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="didChangeSscaleState:" destination="BYZ-38-t0r" eventType="valueChanged" id="by4-X0-WUp"/>
+                                    <action selector="didChangeScaleState:" destination="BYZ-38-t0r" eventType="valueChanged" id="by4-X0-WUp"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-x7-3qw">
