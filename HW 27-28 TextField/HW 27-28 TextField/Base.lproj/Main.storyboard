@@ -25,7 +25,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="8RG-QT-zga"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="8RG-QT-zga"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter login" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="utA-s6-bcx">
@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="mAw-Kv-iEK"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="mAw-Kv-iEK"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5yd-No-H2W">
@@ -45,7 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="cd2-7w-CKj"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="cd2-7w-CKj"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter age" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iee-8U-00Z">
@@ -55,7 +55,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="rtS-ey-rRn"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="rtS-ey-rRn"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter phone number" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3qr-nt-cS4">
@@ -65,7 +65,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="4On-SM-OoA"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="4On-SM-OoA"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lc6-ow-ctD">
@@ -75,7 +75,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="aT4-Vd-QJD"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="aT4-Vd-QJD"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHU-26-YKF">
@@ -183,7 +183,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                                 <connections>
-                                    <action selector="didChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="nSq-RH-NH7"/>
+                                    <action selector="didChangeText:" destination="BYZ-38-t0r" eventType="editingChanged" id="nSq-RH-NH7"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jB-PN-iIf">
