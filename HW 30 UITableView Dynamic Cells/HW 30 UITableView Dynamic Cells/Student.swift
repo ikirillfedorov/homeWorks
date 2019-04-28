@@ -14,7 +14,7 @@ class Student: NSObject {
     var fullName: String {
         return "\(name)" + " " + "\(lastName)"
     }
-    let mark = Int.random(in: 1...5)
+    let mark = Int.random(in: 2...5)
     
     private let names = ["Kirill", "Petya", "Vasya", "Oleg", "Kolya", "Alex"]
     private let lastNames = ["Petrov", "Ivanov", "Sidorov", "Fedorov", "Tkachev"]

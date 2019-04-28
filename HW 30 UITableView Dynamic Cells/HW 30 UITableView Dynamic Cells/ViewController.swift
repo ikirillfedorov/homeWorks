@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var students = [Student]()
+    var school = [[Student]]()
+    
+    var mark5Students = [Student]()
+    var mark4Students = [Student]()
+    var mark3Students = [Student]()
+    var mark2Students = [Student]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +29,26 @@ class ViewController: UIViewController {
             let student = Student()
             students.append(student)
         }
+        
+        for student in students {
+            switch student.mark {
+            case 5: mark5Students.append(student)
+            case 4: mark4Students.append(student)
+            case 3: mark3Students.append(student)
+            case 2: mark2Students.append(student)
+            default:
+                break
+            }
+            
+            mark5Students.sort(by: { $0.name < $1.name })
+            mark4Students.sort(by: { $0.name < $1.name })
+            mark3Students.sort(by: { $0.name < $1.name })
+            mark2Students.sort(by: { $0.name < $1.name })
+
+        }
+        school = [mark5Students, mark4Students, mark3Students, mark2Students]
     }
-
-
+    
 }
 
 //MARK: - UITableViewDataSource
@@ -32,11 +56,30 @@ extension ViewController: UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return school.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            tableView.backgroundColor = .green
+            return "Students with average mark 5"
+        case 1:
+            tableView.backgroundColor = .yellow
+            return "Students with average mark 4"
+        case 2:
+            tableView.backgroundColor = .orange
+            return "Students with average mark 3"
+        case 3:
+            tableView.backgroundColor = .red
+            return "Students with average mark 2"
+        default:
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return school[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,15 +88,13 @@ extension ViewController: UITableViewDataSource {
         var cell: UITableViewCell
         
         if let tempCell = tableView.dequeueReusableCell(withIdentifier: identifier) {
-            print("Cell Reusable")
             cell = tempCell
         } else {
-            print("Cell Crated")
             cell = UITableViewCell.init(style: .value1, reuseIdentifier: identifier)
         }
         
-        cell.textLabel?.text = students[indexPath.row].fullName
-        cell.detailTextLabel?.text = String(students[indexPath.row].mark)
+        cell.textLabel?.text = school[indexPath.section][indexPath.row].fullName
+        cell.detailTextLabel?.text = String(school[indexPath.section][indexPath.row].mark)
         return cell
     }
     
@@ -65,7 +106,6 @@ func getRandomColor() -> UIColor {
                    green: .random(in: 0...1),
                    blue: .random(in: 0...1),
                    alpha: 1.0)
-
 }
 
 func getStringFrom(color:UIColor?) -> String {
