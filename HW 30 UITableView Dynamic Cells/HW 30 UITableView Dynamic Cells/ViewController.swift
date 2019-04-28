@@ -12,15 +12,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var objects = [TestClass]()
+    var students = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-            for i in 0...1000 {
-                let object = TestClass(name: "object#\(i)", color: getRandomColor())
-                objects.append(object)
+        for _ in 0..<30 {
+            let student = Student()
+            students.append(student)
         }
     }
 
@@ -36,7 +36,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1000
+        return students.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,12 +49,11 @@ extension ViewController: UITableViewDataSource {
             cell = tempCell
         } else {
             print("Cell Crated")
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: identifier)
+            cell = UITableViewCell.init(style: .value1, reuseIdentifier: identifier)
         }
         
-        cell.backgroundColor = objects[indexPath.row].color
-        cell.textLabel?.text = objects[indexPath.row].name
-        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.text = students[indexPath.row].fullName
+        cell.detailTextLabel?.text = String(students[indexPath.row].mark)
         return cell
     }
     

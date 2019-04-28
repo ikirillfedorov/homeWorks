@@ -15,6 +15,7 @@
 		5C7E98EC2275B82300C3E24A /* HW_30_UITableView_Dynamic_CellsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E98EB2275B82300C3E24A /* HW_30_UITableView_Dynamic_CellsTests.swift */; };
 		5C7E98F72275B82300C3E24A /* HW_30_UITableView_Dynamic_CellsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E98F62275B82300C3E24A /* HW_30_UITableView_Dynamic_CellsUITests.swift */; };
 		5C7E99072275D00200C3E24A /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E99062275D00200C3E24A /* TestClass.swift */; };
+		5C7E99092275DA7A00C3E24A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E99082275DA7A00C3E24A /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5C7E98F62275B82300C3E24A /* HW_30_UITableView_Dynamic_CellsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW_30_UITableView_Dynamic_CellsUITests.swift; sourceTree = "<group>"; };
 		5C7E98F82275B82300C3E24A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C7E99062275D00200C3E24A /* TestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
+		5C7E99082275DA7A00C3E24A /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				5C7E99062275D00200C3E24A /* TestClass.swift */,
+				5C7E99082275DA7A00C3E24A /* Student.swift */,
 				5C7E98D62275B82200C3E24A /* AppDelegate.swift */,
 				5C7E98D82275B82200C3E24A /* ViewController.swift */,
 				5C7E98DA2275B82200C3E24A /* Main.storyboard */,
@@ -262,6 +265,7 @@
 				5C7E98D92275B82200C3E24A /* ViewController.swift in Sources */,
 				5C7E99072275D00200C3E24A /* TestClass.swift in Sources */,
 				5C7E98D72275B82200C3E24A /* AppDelegate.swift in Sources */,
+				5C7E99092275DA7A00C3E24A /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
