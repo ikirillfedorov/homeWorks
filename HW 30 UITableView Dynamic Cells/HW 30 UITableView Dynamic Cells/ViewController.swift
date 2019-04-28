@@ -12,14 +12,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var objects = [TestClass]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-            var objects = [TestClass]()
-            
             for i in 0...1000 {
                 let object = TestClass(name: "object#\(i)", color: getRandomColor())
                 objects.append(object)
@@ -34,7 +32,7 @@ extension ViewController: UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,8 +40,6 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("row = \(indexPath.row)")
-        print("section = \(indexPath.section)")
 
         let identifier = "Cell"
         var cell: UITableViewCell
@@ -56,8 +52,8 @@ extension ViewController: UITableViewDataSource {
             cell = UITableViewCell.init(style: .default, reuseIdentifier: identifier)
         }
         
-        cell.backgroundColor = getRandomColor()
-        cell.textLabel?.text = getStringFrom(color: cell.backgroundColor)
+        cell.backgroundColor = objects[indexPath.row].color
+        cell.textLabel?.text = objects[indexPath.row].name
         cell.textLabel?.textAlignment = .center
         return cell
     }
