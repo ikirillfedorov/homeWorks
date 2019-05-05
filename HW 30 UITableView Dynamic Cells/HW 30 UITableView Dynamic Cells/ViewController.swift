@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var objects = [TestClass]()
     
     var students = [Student]()
     var school = [[Student]]()
@@ -24,6 +25,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        for i in 0..<10 {
+            let object = TestClass(name: "Object#\(i)", color: getRandomColor())
+            objects.append(object)
+        }
         
         for _ in 0..<30 {
             let student = Student()
@@ -56,45 +62,66 @@ extension ViewController: UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return school.count
+        return school.count + 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            tableView.backgroundColor = .green
+            tableView.sectionIndexColor = .red
             return "Students with average mark 5"
         case 1:
-            tableView.backgroundColor = .yellow
+            tableView.sectionIndexColor = .red
             return "Students with average mark 4"
         case 2:
-            tableView.backgroundColor = .orange
+            tableView.sectionIndexColor = .red
             return "Students with average mark 3"
         case 3:
-            tableView.backgroundColor = .red
+            tableView.sectionIndexColor = .red
             return "Students with average mark 2"
+        case 4:
+            tableView.sectionIndexColor = .red
+            return "COLORS"
+
         default:
             return nil
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return school[section].count
+        switch section {
+        case 4:
+            return objects.count
+        default:
+            return school[section].count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let identifier = "Cell"
+        let identifier = indexPath.section == 4 ? "Colors" : "Cell"
         var cell: UITableViewCell
         
-        if let tempCell = tableView.dequeueReusableCell(withIdentifier: identifier) {
-            cell = tempCell
+        if indexPath.section == 4 {
+            if let tempCell = tableView.dequeueReusableCell(withIdentifier: identifier) {
+                cell = tempCell
+            } else {
+                cell = UITableViewCell.init(style: .default, reuseIdentifier: identifier)
+            }
+            cell.textLabel?.text = objects[indexPath.row].name
+            cell.textLabel?.backgroundColor = objects[indexPath.row].color
+            print("SET COLOR = \(objects[indexPath.row].color)")
+            
         } else {
-            cell = UITableViewCell.init(style: .value1, reuseIdentifier: identifier)
+            
+            if let tempCell = tableView.dequeueReusableCell(withIdentifier: identifier) {
+                cell = tempCell
+            } else {
+                cell = UITableViewCell.init(style: .value1, reuseIdentifier: identifier)
+            }
+            cell.textLabel?.text = school[indexPath.section][indexPath.row].fullName
+            cell.detailTextLabel?.text = String(school[indexPath.section][indexPath.row].mark)
         }
-        
-        cell.textLabel?.text = school[indexPath.section][indexPath.row].fullName
-        cell.detailTextLabel?.text = String(school[indexPath.section][indexPath.row].mark)
         return cell
     }
     
