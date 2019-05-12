@@ -20,8 +20,8 @@ class Student: NSObject {
     private let lastNames = ["Petrov", "Ivanov", "Sidorov", "Fedorov", "Tkachev"]
 
     override init() {
-        self.name = names[Int.random(in: 0...names.count - 1)]
-        self.lastName = lastNames[Int.random(in: 0...lastNames.count - 1)]
+        self.name = names.randomElement() ?? "noName"
+        self.lastName = lastNames.randomElement() ?? "noLastName"
     }
     
 }

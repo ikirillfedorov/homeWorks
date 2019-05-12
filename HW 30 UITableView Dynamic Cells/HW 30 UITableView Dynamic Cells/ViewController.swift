@@ -9,6 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+    enum StudentMark: Int {
+        case mark5 = 5
+        case mark4 = 4
+        case mark3 = 3
+        case mark2 = 2
+    }
     
     @IBOutlet weak var tableView: UITableView!
     var objects = [TestClass]()
@@ -20,7 +27,6 @@ class ViewController: UIViewController {
     var mark4Students = [Student]()
     var mark3Students = [Student]()
     var mark2Students = [Student]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +44,10 @@ class ViewController: UIViewController {
         
         for student in students {
             switch student.mark {
-            case 5: mark5Students.append(student)
-            case 4: mark4Students.append(student)
-            case 3: mark3Students.append(student)
-            case 2: mark2Students.append(student)
+            case StudentMark.mark5.rawValue: mark5Students.append(student)
+            case StudentMark.mark4.rawValue: mark4Students.append(student)
+            case StudentMark.mark3.rawValue: mark3Students.append(student)
+            case StudentMark.mark2.rawValue: mark2Students.append(student)
             default:
                 break
             }
@@ -50,16 +56,13 @@ class ViewController: UIViewController {
             mark4Students.sort(by: { $0.name < $1.name })
             mark3Students.sort(by: { $0.name < $1.name })
             mark2Students.sort(by: { $0.name < $1.name })
-
         }
         school = [mark5Students, mark4Students, mark3Students, mark2Students]
     }
-    
 }
 
 //MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return school.count + 1
@@ -68,21 +71,15 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            tableView.sectionIndexColor = .red
             return "Students with average mark 5"
         case 1:
-            tableView.sectionIndexColor = .red
             return "Students with average mark 4"
         case 2:
-            tableView.sectionIndexColor = .red
             return "Students with average mark 3"
         case 3:
-            tableView.sectionIndexColor = .red
             return "Students with average mark 2"
         case 4:
-            tableView.sectionIndexColor = .red
             return "COLORS"
-
         default:
             return nil
         }
@@ -109,8 +106,7 @@ extension ViewController: UITableViewDataSource {
                 cell = UITableViewCell.init(style: .default, reuseIdentifier: identifier)
             }
             cell.textLabel?.text = objects[indexPath.row].name
-            cell.textLabel?.backgroundColor = objects[indexPath.row].color
-            print("SET COLOR = \(objects[indexPath.row].color)")
+            cell.backgroundColor = objects[indexPath.row].color
             
         } else {
             
@@ -124,7 +120,6 @@ extension ViewController: UITableViewDataSource {
         }
         return cell
     }
-    
 }
 
 //MARK: - Helpful functions
