@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let viewController = GarageListViewController()
         
-        let navContoller = UINavigationController.init(rootViewController: viewController)
+        let navContoller = UINavigationController(rootViewController: viewController)
         
         self.window?.rootViewController = navContoller
         

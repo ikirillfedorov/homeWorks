@@ -17,9 +17,15 @@ class Car {
     var year: Int
     var driver: String
     
-    init() {
-        self.model = models.randomElement() ?? "No model"
-        self.year = years.randomElement()  ?? 2000
-        self.driver = drivers.randomElement() ?? "No driver"
+    init(model: String, year: Int, driver: String) {
+        self.model = model
+        self.year = year
+        self.driver = driver
+    }
+    
+    class func randomCar() -> Car {
+        return Car(model: models.randomElement() ?? "No model",
+                   year: years.randomElement() ?? 2000,
+                   driver: drivers.randomElement() ?? "No driver")
     }
 }

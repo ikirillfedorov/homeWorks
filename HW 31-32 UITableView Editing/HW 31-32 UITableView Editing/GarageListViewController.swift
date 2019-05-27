@@ -24,7 +24,7 @@ import UIKit
 
 class GarageListViewController: UIViewController {
     
-    var tableView = UITableView()
+    var tableView: UITableView!
     var garageArray = [Garage]()
     let addCarCellIndex = 0
     let numberOfSystemCells = 1
@@ -43,7 +43,7 @@ class GarageListViewController: UIViewController {
             let garage = Garage(name: "Garage #\(i + 1)", cars: [Car]())
             
             for _ in 0...arc4random() % 10 {
-                garage.cars.append(Car())
+                garage.cars.append(Car.randomCar())
             }
             garageArray.append(garage)
         }
@@ -62,9 +62,7 @@ class GarageListViewController: UIViewController {
         let isEditing = tableView.isEditing
         tableView.setEditing(!isEditing, animated: true)
         
-        let barButtonItem = isEditing ? UIBarButtonItem.SystemItem.edit : UIBarButtonItem.SystemItem.done
-        
-        let rightBarButton = UIBarButtonItem(barButtonSystemItem: barButtonItem, target: self, action: #selector(actionEdit))
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: isEditing ? .edit : .done, target: self, action: #selector(actionEdit))
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
@@ -73,7 +71,7 @@ class GarageListViewController: UIViewController {
         let garage = Garage(name: "Garage #\(garageArray.count + 1)", cars: [Car]())
         
         for _ in 0...arc4random() % 3 {
-            garage.cars.append(Car())
+            garage.cars.append(Car.randomCar())
         }
         
         garageArray.insert(garage, at: 0)
@@ -133,13 +131,13 @@ extension GarageListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        let sourceGrop = garageArray[sourceIndexPath.section]
-        let car = sourceGrop.cars[sourceIndexPath.row - numberOfSystemCells]
+        let sourceGroup = garageArray[sourceIndexPath.section]
+        let car = sourceGroup.cars[sourceIndexPath.row - numberOfSystemCells]
         
         if sourceIndexPath.section == destinationIndexPath.section {
-            sourceGrop.cars.swapAt(sourceIndexPath.row - numberOfSystemCells, destinationIndexPath.row - numberOfSystemCells)
+            sourceGroup.cars.swapAt(sourceIndexPath.row - numberOfSystemCells, destinationIndexPath.row - numberOfSystemCells)
         } else {
-            sourceGrop.cars.remove(at: sourceIndexPath.row - numberOfSystemCells)
+            sourceGroup.cars.remove(at: sourceIndexPath.row - numberOfSystemCells)
             let destinationGrop = garageArray[destinationIndexPath.section]
             destinationGrop.cars.insert(car, at: destinationIndexPath.row - numberOfSystemCells)
         }
@@ -173,7 +171,7 @@ extension GarageListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == addCarCellIndex {
-            garageArray[indexPath.section].cars.insert(Car(), at: 0)
+            garageArray[indexPath.section].cars.insert(Car.randomCar(), at: 0)
             
             tableView.beginUpdates()
             let newIndexPath = IndexPath(item: 1, section: indexPath.section)
