@@ -22,36 +22,28 @@
 
 import UIKit
 
-class MyViewController: UIViewController {
+class GarageListViewController: UIViewController {
     
     var tableView = UITableView()
     var garageArray = [Garage]()
-    
-    override func loadView() {
-        super.loadView()
-        
-        let frame = view.bounds
-        let tableView = UITableView.init(frame: frame, style: UITableView.Style.grouped)
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.tableView = tableView
-//        tableView.allowsSelectionDuringEditing = true
-        
-        view.addSubview(tableView)
-    }
+    let addCarCellIndex = 0
+    let numberOfSystemCells = 1
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
+
         for i in 0...arc4random() % 10 {
-            let garage = Garage()
-            garage.name = "Garage #\(i)"
-            garage.cars = [Car]()
+            let garage = Garage(name: "Garage #\(i + 1)", cars: [Car]())
             
             for _ in 0...arc4random() % 10 {
-                garage.cars.append(Car.randomCar())
+                garage.cars.append(Car())
             }
             garageArray.append(garage)
         }
@@ -69,31 +61,26 @@ class MyViewController: UIViewController {
     @objc func actionEdit() {
         let isEditing = tableView.isEditing
         tableView.setEditing(!isEditing, animated: true)
-        var barButtonItem = UIBarButtonItem.SystemItem.done
         
-        if isEditing {
-            barButtonItem = UIBarButtonItem.SystemItem.edit
-        }
+        let barButtonItem = isEditing ? UIBarButtonItem.SystemItem.edit : UIBarButtonItem.SystemItem.done
         
-        let editButton = UIBarButtonItem(barButtonSystemItem: barButtonItem, target: self, action: #selector(actionEdit))
-        navigationItem.rightBarButtonItem = editButton
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: barButtonItem, target: self, action: #selector(actionEdit))
+        navigationItem.rightBarButtonItem = rightBarButton
     }
     
     @objc func actionAdd() {
         
-        let garage = Garage()
-        garage.name = "Garage #\(garageArray.count + 1)"
-        garage.cars = [Car]()
+        let garage = Garage(name: "Garage #\(garageArray.count + 1)", cars: [Car]())
         
         for _ in 0...arc4random() % 3 {
-            garage.cars.append(Car.randomCar())
+            garage.cars.append(Car())
         }
         
         garageArray.insert(garage, at: 0)
         print(garageArray.count)
         
         tableView.beginUpdates()
-        let inserSections = IndexSet(integer: 0)
+        let inserSections = IndexSet(integer: addCarCellIndex)
         tableView.insertSections(inserSections, with: UITableView.RowAnimation.right)
         tableView.endUpdates()
         
@@ -103,6 +90,10 @@ class MyViewController: UIViewController {
         }
     }
     
+} //end of class
+
+//MARK: - extension UITableViewDataSource
+extension GarageListViewController: UITableViewDataSource {
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return garageArray.count
@@ -113,14 +104,14 @@ class MyViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + (garageArray[section].cars?.count ?? 0)
+        return 1 + (garageArray[section].cars.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = UITableViewCell()
+        let cell: UITableViewCell
         
-        if indexPath.row == 0 {
+        if indexPath.row == addCarCellIndex {
             let addCarIdentifier = "AddCar"
             cell = tableView.dequeueReusableCell(withIdentifier: addCarIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: addCarIdentifier)
             cell.textLabel?.text = "Add new car"
@@ -129,7 +120,7 @@ class MyViewController: UIViewController {
         } else {
             let carIdentifier = "CarCell"
             cell = tableView.dequeueReusableCell(withIdentifier: carIdentifier) ?? UITableViewCell(style: .value1, reuseIdentifier: carIdentifier)
-            let car = garageArray[indexPath.section].cars[indexPath.row - 1]
+            let car = garageArray[indexPath.section].cars[indexPath.row - numberOfSystemCells]
             cell.textLabel?.text = "\(car.model) (Driver: \(car.driver))"
             cell.detailTextLabel?.text = "\(car.year)"
         }
@@ -137,52 +128,52 @@ class MyViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row != 0
+        return indexPath.row != addCarCellIndex
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         let sourceGrop = garageArray[sourceIndexPath.section]
-        let car = sourceGrop.cars[sourceIndexPath.row - 1]
+        let car = sourceGrop.cars[sourceIndexPath.row - numberOfSystemCells]
         
         if sourceIndexPath.section == destinationIndexPath.section {
-            sourceGrop.cars.swapAt(sourceIndexPath.row - 1, destinationIndexPath.row - 1)
+            sourceGrop.cars.swapAt(sourceIndexPath.row - numberOfSystemCells, destinationIndexPath.row - numberOfSystemCells)
         } else {
-            sourceGrop.cars.remove(at: sourceIndexPath.row - 1)
+            sourceGrop.cars.remove(at: sourceIndexPath.row - numberOfSystemCells)
             let destinationGrop = garageArray[destinationIndexPath.section]
-            destinationGrop.cars.insert(car, at: destinationIndexPath.row - 1)
+            destinationGrop.cars.insert(car, at: destinationIndexPath.row - numberOfSystemCells)
         }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            garageArray[indexPath.section].cars.remove(at: indexPath.row - 1)
+            garageArray[indexPath.section].cars.remove(at: indexPath.row - numberOfSystemCells)
             
             tableView.beginUpdates()
             let indexPathForDelete = IndexPath(item: indexPath.row, section: indexPath.section)
-            tableView.deleteRows(at: [indexPathForDelete], with: UITableView.RowAnimation.left)
+            tableView.deleteRows(at: [indexPathForDelete], with: .left)
             tableView.endUpdates()
         }
     }
-} //end of class
+}
 
-//MARK: - extension
-extension MyViewController: UITableViewDelegate, UITableViewDataSource {
+//MARK: - extension UITableViewDelegate
+extension GarageListViewController: UITableViewDelegate {
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return indexPath.row == 0 ? .none : .delete
+        return indexPath.row == addCarCellIndex ? .none : .delete
     }
     
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        return proposedDestinationIndexPath.row == 0 ? sourceIndexPath : proposedDestinationIndexPath
+        return proposedDestinationIndexPath.row == addCarCellIndex ? sourceIndexPath : proposedDestinationIndexPath
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row == 0 {
-            garageArray[indexPath.section].cars.insert(Car.randomCar(), at: 0)
+        if indexPath.row == addCarCellIndex {
+            garageArray[indexPath.section].cars.insert(Car(), at: 0)
             
             tableView.beginUpdates()
             let newIndexPath = IndexPath(item: 1, section: indexPath.section)

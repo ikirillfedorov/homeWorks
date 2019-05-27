@@ -15,7 +15,7 @@
 		5CE578052295AEFC00C8E9EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE578032295AEFC00C8E9EE /* LaunchScreen.storyboard */; };
 		5CE578102295AEFD00C8E9EE /* HW_31_32_UITableView_EditingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5780F2295AEFD00C8E9EE /* HW_31_32_UITableView_EditingTests.swift */; };
 		5CE5781B2295AEFD00C8E9EE /* HW_31_32_UITableView_EditingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5781A2295AEFD00C8E9EE /* HW_31_32_UITableView_EditingUITests.swift */; };
-		5CE578292295B0E100C8E9EE /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE578282295B0E100C8E9EE /* MyViewController.swift */; };
+		5CE578292295B0E100C8E9EE /* GarageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE578282295B0E100C8E9EE /* GarageListViewController.swift */; };
 		5CF5A7732295C4FB009E94E3 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5A7722295C4FB009E94E3 /* Car.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,7 @@
 		5CE578162295AEFD00C8E9EE /* HW 31-32 UITableView EditingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HW 31-32 UITableView EditingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE5781A2295AEFD00C8E9EE /* HW_31_32_UITableView_EditingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW_31_32_UITableView_EditingUITests.swift; sourceTree = "<group>"; };
 		5CE5781C2295AEFD00C8E9EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CE578282295B0E100C8E9EE /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		5CE578282295B0E100C8E9EE /* GarageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageListViewController.swift; sourceTree = "<group>"; };
 		5CF5A7722295C4FB009E94E3 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				5CE14D50229937C700ACD25B /* Models */,
-				5CE578282295B0E100C8E9EE /* MyViewController.swift */,
+				5CE578282295B0E100C8E9EE /* GarageListViewController.swift */,
 				5CE577FA2295AEFB00C8E9EE /* AppDelegate.swift */,
 				5CE577FE2295AEFB00C8E9EE /* Main.storyboard */,
 				5CE578012295AEFC00C8E9EE /* Assets.xcassets */,
@@ -274,7 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CE577FD2295AEFB00C8E9EE /* ViewController.swift in Sources */,
-				5CE578292295B0E100C8E9EE /* MyViewController.swift in Sources */,
+				5CE578292295B0E100C8E9EE /* GarageListViewController.swift in Sources */,
 				5CE14D4F229937BF00ACD25B /* Garage.swift in Sources */,
 				5CF5A7732295C4FB009E94E3 /* Car.swift in Sources */,
 				5CE577FB2295AEFB00C8E9EE /* AppDelegate.swift in Sources */,

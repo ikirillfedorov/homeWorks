@@ -8,10 +8,15 @@
 
 import UIKit
 
-class Garage: NSObject {
+class Garage {
     
-    var name: String!
-    var cars: [Car]!
+    var name: String
+    var cars: [Car]
+    
+    init(name: String, cars: [Car]) {
+        self.name = name
+        self.cars = cars
+    }
 
     deinit {
         print("DEALLOCEATED GARAGE")
