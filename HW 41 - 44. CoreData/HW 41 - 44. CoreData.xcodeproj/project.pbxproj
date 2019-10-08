@@ -15,7 +15,9 @@
 		5C2E0F6723486D7D00E238F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6523486D7D00E238F3 /* LaunchScreen.storyboard */; };
 		5C2E0F7023486F6900E238F3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6E23486F6900E238F3 /* User+CoreDataClass.swift */; };
 		5C2E0F7123486F6900E238F3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6F23486F6900E238F3 /* User+CoreDataProperties.swift */; };
-		5C2E0F76234870ED00E238F3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F75234870ED00E238F3 /* TableViewController.swift */; };
+		5C2E0F76234870ED00E238F3 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F75234870ED00E238F3 /* UserTableViewController.swift */; };
+		5C2E0F7E23489CF800E238F3 /* UserDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */; };
+		5C2E0F822348A23800E238F3 /* UserDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +31,9 @@
 		5C2E0F6823486D7D00E238F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C2E0F6E23486F6900E238F3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5C2E0F6F23486F6900E238F3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5C2E0F75234870ED00E238F3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5C2E0F75234870ED00E238F3 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewController.swift; sourceTree = "<group>"; };
+		5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				5C2E0F7223486F6E00E238F3 /* Models */,
+				5C2E0F842348A43600E238F3 /* ViewControllers */,
+				5C2E0F832348A24700E238F3 /* TbaleViewCells */,
 				5C2E0F5723486D7B00E238F3 /* AppDelegate.swift */,
 				5C2E0F5923486D7B00E238F3 /* SceneDelegate.swift */,
-				5C2E0F75234870ED00E238F3 /* TableViewController.swift */,
 				5C2E0F5D23486D7B00E238F3 /* Main.storyboard */,
 				5C2E0F6323486D7D00E238F3 /* Assets.xcassets */,
 				5C2E0F6523486D7D00E238F3 /* LaunchScreen.storyboard */,
@@ -82,6 +87,23 @@
 				5C2E0F6F23486F6900E238F3 /* User+CoreDataProperties.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5C2E0F832348A24700E238F3 /* TbaleViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */,
+			);
+			path = TbaleViewCells;
+			sourceTree = "<group>";
+		};
+		5C2E0F842348A43600E238F3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */,
+				5C2E0F75234870ED00E238F3 /* UserTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,10 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2E0F7E23489CF800E238F3 /* UserDetailTableViewController.swift in Sources */,
 				5C2E0F5823486D7B00E238F3 /* AppDelegate.swift in Sources */,
-				5C2E0F76234870ED00E238F3 /* TableViewController.swift in Sources */,
+				5C2E0F76234870ED00E238F3 /* UserTableViewController.swift in Sources */,
 				5C2E0F7123486F6900E238F3 /* User+CoreDataProperties.swift in Sources */,
 				5C2E0F6223486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodeld in Sources */,
+				5C2E0F822348A23800E238F3 /* UserDetailTableViewCell.swift in Sources */,
 				5C2E0F5A23486D7B00E238F3 /* SceneDelegate.swift in Sources */,
 				5C2E0F7023486F6900E238F3 /* User+CoreDataClass.swift in Sources */,
 			);

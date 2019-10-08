@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--University-->
         <scene sceneID="Mf7-HH-2jI">
             <objects>
-                <tableViewController id="fnq-St-9CB" customClass="TableViewController" customModule="HW_41___44__CoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="rootViewContoroller" id="fnq-St-9CB" customClass="UserTableViewController" customModule="HW_41___44__CoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oAV-9l-ghj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                             <outlet property="delegate" destination="fnq-St-9CB" id="NfI-Vd-Sno"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="zmk-rb-6Mv">
+                    <navigationItem key="navigationItem" title="University" id="zmk-rb-6Mv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DU5-Yj-BrJ">
                             <connections>
                                 <action selector="addUserBarButton:" destination="fnq-St-9CB" id="gnw-YK-TSe"/>
@@ -28,11 +28,66 @@
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="oAV-9l-ghj" id="5xT-Yv-QDr"/>
+                        <segue destination="SPt-0O-cfp" kind="show" identifier="showDetailVC" id="jPL-w0-aUI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rHa-z4-H3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165" y="73"/>
+        </scene>
+        <!--User Detail Table View Controller-->
+        <scene sceneID="oQJ-X3-ct0">
+            <objects>
+                <tableViewController storyboardIdentifier="userDetailTableViewController" id="SPt-0O-cfp" customClass="UserDetailTableViewController" customModule="HW_41___44__CoreData" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="I8D-lI-aXF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userDetailCell" id="Ifq-Z7-bqT" customClass="UserDetailTableViewCell" customModule="HW_41___44__CoreData" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ifq-Z7-bqT" id="33v-BQ-1d0">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQd-Sc-7xv">
+                                            <rect key="frame" x="20" y="5" width="125" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MPK-77-vjv">
+                                            <rect key="frame" x="153" y="5" width="241" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="fQd-Sc-7xv" id="Ow4-v2-KQb"/>
+                                    <outlet property="textField" destination="MPK-77-vjv" id="Mpg-Wy-qZw"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SPt-0O-cfp" id="8DC-X9-3VJ"/>
+                            <outlet property="delegate" destination="SPt-0O-cfp" id="KDo-jO-XLy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="pIY-8h-MqQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HIt-44-0ut">
+                            <connections>
+                                <action selector="saveBarButton:" destination="SPt-0O-cfp" id="fx3-77-IGf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oHi-ib-Jic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.88405797101461" y="72.991071428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xba-a6-aIy">
