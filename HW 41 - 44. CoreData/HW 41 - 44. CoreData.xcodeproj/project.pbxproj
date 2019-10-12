@@ -10,14 +10,20 @@
 		5C2E0F5823486D7B00E238F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F5723486D7B00E238F3 /* AppDelegate.swift */; };
 		5C2E0F5A23486D7B00E238F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F5923486D7B00E238F3 /* SceneDelegate.swift */; };
 		5C2E0F5F23486D7B00E238F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2E0F5D23486D7B00E238F3 /* Main.storyboard */; };
-		5C2E0F6223486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6023486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodeld */; };
 		5C2E0F6423486D7D00E238F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6323486D7D00E238F3 /* Assets.xcassets */; };
 		5C2E0F6723486D7D00E238F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6523486D7D00E238F3 /* LaunchScreen.storyboard */; };
-		5C2E0F7023486F6900E238F3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6E23486F6900E238F3 /* User+CoreDataClass.swift */; };
-		5C2E0F7123486F6900E238F3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F6F23486F6900E238F3 /* User+CoreDataProperties.swift */; };
 		5C2E0F76234870ED00E238F3 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F75234870ED00E238F3 /* UserTableViewController.swift */; };
 		5C2E0F7E23489CF800E238F3 /* UserDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */; };
 		5C2E0F822348A23800E238F3 /* UserDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */; };
+		5C2E0F86234D7EDB00E238F3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F85234D7EDB00E238F3 /* CoreDataManager.swift */; };
+		5C2E0F88234D84E300E238F3 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F87234D84E300E238F3 /* CourseTableViewController.swift */; };
+		5CF018C423502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C223502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld */; };
+		5CF018C723502EDD003807D1 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C523502EDD003807D1 /* User+CoreDataClass.swift */; };
+		5CF018C823502EDD003807D1 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C623502EDD003807D1 /* User+CoreDataProperties.swift */; };
+		5CF018CB23502F34003807D1 /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C923502F34003807D1 /* Course+CoreDataClass.swift */; };
+		5CF018CC23502F34003807D1 /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018CA23502F34003807D1 /* Course+CoreDataProperties.swift */; };
+		5CF018CE2350311B003807D1 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018CD2350311B003807D1 /* CourseDetailTableViewController.swift */; };
+		5CF018D023503A9B003807D1 /* CourseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018CF23503A9B003807D1 /* CourseDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,15 +31,21 @@
 		5C2E0F5723486D7B00E238F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C2E0F5923486D7B00E238F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5C2E0F5E23486D7B00E238F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5C2E0F6123486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HW_41___44__CoreData.xcdatamodel"; sourceTree = "<group>"; };
 		5C2E0F6323486D7D00E238F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C2E0F6623486D7D00E238F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C2E0F6823486D7D00E238F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C2E0F6E23486F6900E238F3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5C2E0F6F23486F6900E238F3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5C2E0F75234870ED00E238F3 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewController.swift; sourceTree = "<group>"; };
 		5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewCell.swift; sourceTree = "<group>"; };
+		5C2E0F85234D7EDB00E238F3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5C2E0F87234D84E300E238F3 /* CourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
+		5CF018C323502E8C003807D1 /* HW_41___44__CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HW_41___44__CoreData.xcdatamodel"; sourceTree = "<group>"; };
+		5CF018C523502EDD003807D1 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		5CF018C623502EDD003807D1 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		5CF018C923502F34003807D1 /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		5CF018CA23502F34003807D1 /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		5CF018CD2350311B003807D1 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
+		5CF018CF23503A9B003807D1 /* CourseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +78,7 @@
 		5C2E0F5623486D7B00E238F3 /* HW 41 - 44. CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				5C2E0F85234D7EDB00E238F3 /* CoreDataManager.swift */,
 				5C2E0F7223486F6E00E238F3 /* Models */,
 				5C2E0F842348A43600E238F3 /* ViewControllers */,
 				5C2E0F832348A24700E238F3 /* TbaleViewCells */,
@@ -75,7 +88,7 @@
 				5C2E0F6323486D7D00E238F3 /* Assets.xcassets */,
 				5C2E0F6523486D7D00E238F3 /* LaunchScreen.storyboard */,
 				5C2E0F6823486D7D00E238F3 /* Info.plist */,
-				5C2E0F6023486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodeld */,
+				5CF018C223502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld */,
 			);
 			path = "HW 41 - 44. CoreData";
 			sourceTree = "<group>";
@@ -83,8 +96,10 @@
 		5C2E0F7223486F6E00E238F3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5C2E0F6E23486F6900E238F3 /* User+CoreDataClass.swift */,
-				5C2E0F6F23486F6900E238F3 /* User+CoreDataProperties.swift */,
+				5CF018C923502F34003807D1 /* Course+CoreDataClass.swift */,
+				5CF018CA23502F34003807D1 /* Course+CoreDataProperties.swift */,
+				5CF018C523502EDD003807D1 /* User+CoreDataClass.swift */,
+				5CF018C623502EDD003807D1 /* User+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -93,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */,
+				5CF018CF23503A9B003807D1 /* CourseDetailTableViewCell.swift */,
 			);
 			path = TbaleViewCells;
 			sourceTree = "<group>";
@@ -100,8 +116,10 @@
 		5C2E0F842348A43600E238F3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */,
 				5C2E0F75234870ED00E238F3 /* UserTableViewController.swift */,
+				5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */,
+				5C2E0F87234D84E300E238F3 /* CourseTableViewController.swift */,
+				5CF018CD2350311B003807D1 /* CourseDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -177,14 +195,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2E0F88234D84E300E238F3 /* CourseTableViewController.swift in Sources */,
+				5CF018D023503A9B003807D1 /* CourseDetailTableViewCell.swift in Sources */,
+				5CF018CB23502F34003807D1 /* Course+CoreDataClass.swift in Sources */,
 				5C2E0F7E23489CF800E238F3 /* UserDetailTableViewController.swift in Sources */,
 				5C2E0F5823486D7B00E238F3 /* AppDelegate.swift in Sources */,
+				5CF018CE2350311B003807D1 /* CourseDetailTableViewController.swift in Sources */,
 				5C2E0F76234870ED00E238F3 /* UserTableViewController.swift in Sources */,
-				5C2E0F7123486F6900E238F3 /* User+CoreDataProperties.swift in Sources */,
-				5C2E0F6223486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodeld in Sources */,
 				5C2E0F822348A23800E238F3 /* UserDetailTableViewCell.swift in Sources */,
+				5CF018C723502EDD003807D1 /* User+CoreDataClass.swift in Sources */,
+				5CF018C423502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld in Sources */,
+				5C2E0F86234D7EDB00E238F3 /* CoreDataManager.swift in Sources */,
+				5CF018C823502EDD003807D1 /* User+CoreDataProperties.swift in Sources */,
+				5CF018CC23502F34003807D1 /* Course+CoreDataProperties.swift in Sources */,
 				5C2E0F5A23486D7B00E238F3 /* SceneDelegate.swift in Sources */,
-				5C2E0F7023486F6900E238F3 /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,12 +408,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5C2E0F6023486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodeld */ = {
+		5CF018C223502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5C2E0F6123486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodel */,
+				5CF018C323502E8C003807D1 /* HW_41___44__CoreData.xcdatamodel */,
 			);
-			currentVersion = 5C2E0F6123486D7B00E238F3 /* HW_41___44__CoreData.xcdatamodel */;
+			currentVersion = 5CF018C323502E8C003807D1 /* HW_41___44__CoreData.xcdatamodel */;
 			path = "HW_41___44__CoreData.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

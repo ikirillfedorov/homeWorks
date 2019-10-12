@@ -11,10 +11,6 @@ import UIKit
 class UserDetailTableViewController: UITableViewController {
     
     
-//    var firstName: String?
-//    var lastName: String?
-//    var email: String?
-    
     var firstNameTextField: UITextField!
     var lastNameTextField: UITextField!
     var emailTextField: UITextField!
@@ -26,43 +22,26 @@ class UserDetailTableViewController: UITableViewController {
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
 
         if editingUser == nil {
-            userVC.addUserToCoreData(fisrtName: firstNameTextField.text ?? "",
-                                     lastName: lastNameTextField.text ?? "",
-                                     email: emailTextField.text ?? "")
+            CoreDataManager.shared.addUserToCoreData(fisrtName: firstNameTextField.text ?? "",
+                                                     lastName: lastNameTextField.text ?? "",
+                                                     email: emailTextField.text ?? "")
         } else {
-            guard let updaterUser = userVC.getUserFromCD(user: editingUser!) else { return }
-            updaterUser.firstName = firstNameTextField.text ?? ""
-            updaterUser.lastName = lastNameTextField.text ?? ""
-            updaterUser.email = emailTextField.text ?? ""
+            guard let updatingUser = CoreDataManager.shared.getUserFromCD(user: editingUser!) else { return }
+            updatingUser.firstName = firstNameTextField.text ?? ""
+            updatingUser.lastName = lastNameTextField.text ?? ""
+            updatingUser.email = emailTextField.text ?? ""
+            editingUser = nil
         }
         
-        
         navigationController?.popViewController(animated: true)
-        editingUser = nil
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         guard let controllers = navigationController?.viewControllers else { return }
         userVC = controllers[controllers.count - 2] as? UserTableViewController
-
         editingUser = userVC.selectedUser
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Help functions
-    private func setUserEditing(text: String) {
-        if editingUser != nil {
-            
-        }
-    }
-
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,20 +58,6 @@ class UserDetailTableViewController: UITableViewController {
         let reuseIdentifier = "userDetailCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserDetailTableViewCell
         
-//        if editingUser != nil {
-//            switch indexPath.row {
-//            case 0:
-//                cell.label.text = "First name"
-//            case 1:
-//                cell.label.text = "Last name"
-//                cell.textField.placeholder = "Enter your last name"
-//                lastNameTextField = cell.textField
-//            default:
-//                cell.label.text = "Email"
-//                cell.textField.placeholder = "Enter your email adress"
-//                emailTextField = cell.textField
-//            }
-//        }
         
         if indexPath.section == 0 {
             switch indexPath.row {
@@ -113,8 +78,6 @@ class UserDetailTableViewController: UITableViewController {
                 emailTextField.text = editingUser?.email
             }
         }
-        
-
         // Configure the cell...
 
         return cell

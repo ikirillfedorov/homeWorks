@@ -1,18 +1,18 @@
 //
-//  UserDetailTableViewCell.swift
+//  CourseDetailTableViewCell.swift
 //  HW 41 - 44. CoreData
 //
-//  Created by Kirill Fedorov on 05/10/2019.
+//  Created by Kirill Fedorov on 11.10.2019.
 //  Copyright © 2019 Kirill Fedorov. All rights reserved.
 //
 
 import UIKit
 
-class UserDetailTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField! 
+class CourseDetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
