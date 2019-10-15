@@ -17,7 +17,7 @@ class UserDetailTableViewController: UITableViewController {
     var editingUser: User?
 
     
-    var userVC: UserTableViewController!
+    var userVC: UserTableViewController?
 
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
 
@@ -38,8 +38,11 @@ class UserDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let controllers = navigationController?.viewControllers else { return }
-        userVC = controllers[controllers.count - 2] as? UserTableViewController
-        editingUser = userVC.selectedUser
+        if let userVC = controllers[controllers.count - 2] as? UserTableViewController {
+            editingUser = userVC.selectedUser
+        }
+        
+        
     }
 
     // MARK: - Table view data source

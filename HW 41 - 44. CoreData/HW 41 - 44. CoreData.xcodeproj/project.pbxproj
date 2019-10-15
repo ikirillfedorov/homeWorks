@@ -17,6 +17,8 @@
 		5C2E0F822348A23800E238F3 /* UserDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */; };
 		5C2E0F86234D7EDB00E238F3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F85234D7EDB00E238F3 /* CoreDataManager.swift */; };
 		5C2E0F88234D84E300E238F3 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E0F87234D84E300E238F3 /* CourseTableViewController.swift */; };
+		5C586F96235334CB0038D778 /* UsersListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C586F95235334CB0038D778 /* UsersListTableViewController.swift */; };
+		5C6EA01923542EC500DD7004 /* TeachersListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA01823542EC500DD7004 /* TeachersListTableViewController.swift */; };
 		5CF018C423502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C223502E8C003807D1 /* HW_41___44__CoreData.xcdatamodeld */; };
 		5CF018C723502EDD003807D1 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C523502EDD003807D1 /* User+CoreDataClass.swift */; };
 		5CF018C823502EDD003807D1 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF018C623502EDD003807D1 /* User+CoreDataProperties.swift */; };
@@ -39,6 +41,8 @@
 		5C2E0F812348A23800E238F3 /* UserDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewCell.swift; sourceTree = "<group>"; };
 		5C2E0F85234D7EDB00E238F3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5C2E0F87234D84E300E238F3 /* CourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
+		5C586F95235334CB0038D778 /* UsersListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListTableViewController.swift; sourceTree = "<group>"; };
+		5C6EA01823542EC500DD7004 /* TeachersListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersListTableViewController.swift; sourceTree = "<group>"; };
 		5CF018C323502E8C003807D1 /* HW_41___44__CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HW_41___44__CoreData.xcdatamodel"; sourceTree = "<group>"; };
 		5CF018C523502EDD003807D1 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5CF018C623502EDD003807D1 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -120,6 +124,8 @@
 				5C2E0F7D23489CF800E238F3 /* UserDetailTableViewController.swift */,
 				5C2E0F87234D84E300E238F3 /* CourseTableViewController.swift */,
 				5CF018CD2350311B003807D1 /* CourseDetailTableViewController.swift */,
+				5C586F95235334CB0038D778 /* UsersListTableViewController.swift */,
+				5C6EA01823542EC500DD7004 /* TeachersListTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -196,6 +202,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C2E0F88234D84E300E238F3 /* CourseTableViewController.swift in Sources */,
+				5C586F96235334CB0038D778 /* UsersListTableViewController.swift in Sources */,
+				5C6EA01923542EC500DD7004 /* TeachersListTableViewController.swift in Sources */,
 				5CF018D023503A9B003807D1 /* CourseDetailTableViewCell.swift in Sources */,
 				5CF018CB23502F34003807D1 /* Course+CoreDataClass.swift in Sources */,
 				5C2E0F7E23489CF800E238F3 /* UserDetailTableViewController.swift in Sources */,

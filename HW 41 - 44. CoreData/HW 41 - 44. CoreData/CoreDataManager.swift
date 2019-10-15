@@ -71,15 +71,16 @@ class CoreDataManager: NSObject {
     
     //MARK: - course methods
     
-    func addCourseToCoreData(title: String, discipline: String, sphere: String) {
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Course", in: manageObjectContext) else { return }
-        guard let course = NSManagedObject(entity: entityDescription, insertInto: manageObjectContext) as? Course else { return }
+    func addCourseToCoreData(title: String, discipline: String, sphere: String) -> Course? {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Course", in: manageObjectContext) else { return nil }
+        guard let course = NSManagedObject(entity: entityDescription, insertInto: manageObjectContext) as? Course else { return nil }
         course.title = title
         course.discipline = discipline
         course.sphere = sphere
         
         appdelegate.saveContext()
         print("Course added to core data")
+        return course
     }
     
     //get courses

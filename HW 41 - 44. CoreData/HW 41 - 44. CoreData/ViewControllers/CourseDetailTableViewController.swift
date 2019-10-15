@@ -14,8 +14,9 @@ class CourseDetailTableViewController: UITableViewController {
     var disciplineTextField: UITextField!
     var sphereTextField: UITextField!
     
-    var students: [User]?
+    var students = [User]()
     var editingCourse: Course?
+    var teacher: User?
     
     
     var courseVC: CourseTableViewController!
@@ -23,7 +24,7 @@ class CourseDetailTableViewController: UITableViewController {
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
         
         if editingCourse == nil {
-            CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "",
+            editingCourse = CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "",
                                                        discipline: disciplineTextField.text ?? "",
                                                        sphere: sphereTextField.text ?? "")
         } else {
@@ -42,6 +43,24 @@ class CourseDetailTableViewController: UITableViewController {
         guard let controllers = navigationController?.viewControllers else { return }
         courseVC = controllers[controllers.count - 2] as? CourseTableViewController
         editingCourse = courseVC.selectedCourse
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        //set students from editingcourse.students
+        guard let courseStudents = editingCourse?.students?.allObjects as? [User] else { return }
+        students = courseStudents
+        print(students.count)
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showUserDetailVC" {
+            let vc = segue.destination as! UserDetailTableViewController
+            vc.editingUser = (sender as! User)
+        }
     }
     
     // MARK: - Table view data source
@@ -65,85 +84,107 @@ class CourseDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0 {
-            return 3
+            return 4
         } else {
-            return editingCourse?.students?.count ?? 1
+            return students.count + 1
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reuseIdentifier = "courseDetailCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! CourseDetailTableViewCell
+        let courseCellIdentifier = "courseDetailCell"
+        let usersCellIdentifier = "usersCellIdentifier"
+        
+        var cell = UITableViewCell()
+
+        let courseInfoCell = tableView.dequeueReusableCell(withIdentifier: courseCellIdentifier, for: indexPath) as! CourseDetailTableViewCell
+        let userCell = tableView.dequeueReusableCell(withIdentifier: usersCellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: usersCellIdentifier)
         
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                cell.label.text = "Title"
-                cell.textField.placeholder = "Enter title of course"
-                titleTextField = cell.textField
+                courseInfoCell.label.text = "Title"
+                courseInfoCell.textField.placeholder = "Enter title of course"
+                titleTextField = courseInfoCell.textField
                 titleTextField.text = editingCourse?.title
             case 1:
-                cell.label.text = "Discipline"
-                cell.textField.placeholder = "Enter discipline of course"
-                disciplineTextField = cell.textField
+                courseInfoCell.label.text = "Discipline"
+                courseInfoCell.textField.placeholder = "Enter discipline of course"
+                disciplineTextField = courseInfoCell.textField
                 disciplineTextField.text = editingCourse?.discipline
-            default:
-                cell.label.text = "Sphere"
-                cell.textField.placeholder = "Enter sphere of course"
-                sphereTextField = cell.textField
+            case 2:
+                courseInfoCell.label.text = "Sphere"
+                courseInfoCell.textField.placeholder = "Enter sphere of course"
+                sphereTextField = courseInfoCell.textField
                 sphereTextField.text = editingCourse?.sphere
+            default:
+                let teacherCell = tableView.dequeueReusableCell(withIdentifier: "teacherCell") ?? UITableViewCell(style: .value1, reuseIdentifier: "teacherCell")
+                teacherCell.textLabel?.text = " Teacher"
+                teacherCell.detailTextLabel?.text = teacher == nil ? "Choose teacher" : (teacher?.firstName ?? "") + " " + (teacher?.lastName ?? "")
+
+                return teacherCell
             }
+            cell = courseInfoCell
         } else if indexPath.section == 1 {
-            
+            if indexPath.row == 0 {
+                let systemCell = tableView.dequeueReusableCell(withIdentifier: "systemCell") ?? UITableViewCell(style: .default, reuseIdentifier: "systemCell")
+                systemCell.textLabel?.text = "Add student"
+                systemCell.textLabel?.textAlignment = .center
+                return systemCell
+            } else {
+                userCell.textLabel?.text = (students[indexPath.row - 1].firstName ?? "") + " " + (students[indexPath.row - 1].lastName ?? "")
+                userCell.detailTextLabel?.text = (students[indexPath.row - 1].email ?? "")
+                userCell.accessoryType = .disclosureIndicator
+            }
+            cell = userCell
         }
-        // Configure the cell...
-        
         return cell
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 3:
+                print("Teacher cell pressed")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let teachersListVC = storyboard.instantiateViewController(identifier: "teachersListTableViewController") as! TeachersListTableViewController
+                teachersListVC.selectedCourse = editingCourse
+                teachersListVC.selectedTeacher = teacher
+                navigationController?.pushViewController(teachersListVC, animated: true)
+            default:
+                break
+            }
+        }
+        
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                if editingCourse == nil {
+                    editingCourse = CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "",
+                                                               discipline: disciplineTextField.text ?? "",
+                                                               sphere: sphereTextField.text ?? "")
+                }
+                //do somthing
+                print("System cell pressed")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let userListVC = storyboard.instantiateViewController(identifier: "usersListTableViewController") as! UsersListTableViewController
+                userListVC.selectedCourse = editingCourse
+                navigationController?.pushViewController(userListVC, animated: true)
+            } else {
+                let selectedUser = students[indexPath.row - 1]
+                performSegue(withIdentifier: "showUserDetailVC", sender: selectedUser)
+            }
+        }
+    }
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .left)
+            let studentToDelete = students.remove(at: indexPath.row - 1)
+            guard let course = editingCourse else { return }
+            course.removeFromStudents(studentToDelete)
+            tableView.endUpdates()
+        }
+    }
 }
