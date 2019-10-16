@@ -16,23 +16,16 @@ class TeachersListTableViewController: UITableViewController {
     
     @IBAction func saveTeacherBarButton(_ sender: UIBarButtonItem) {
         print("saveTeacherBarButton pressed")
-        guard let controllers = navigationController?.viewControllers else { return }
-        print(controllers.count)
-        if let courseVC = controllers[controllers.count - 2] as? CourseDetailTableViewController {
-            courseVC.teacher = selectedTeacher
-        }
+        
+        selectedCourse?.teacher = selectedTeacher
+        CoreDataManager.shared.appdelegate.saveContext()
+        
         navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         teachers = CoreDataManager.shared.getUsersFromCoreData()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source

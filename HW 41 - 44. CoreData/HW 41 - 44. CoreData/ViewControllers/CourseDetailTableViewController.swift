@@ -18,7 +18,6 @@ class CourseDetailTableViewController: UITableViewController {
     var editingCourse: Course?
     var teacher: User?
     
-    
     var courseVC: CourseTableViewController!
     
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
@@ -52,7 +51,7 @@ class CourseDetailTableViewController: UITableViewController {
         //set students from editingcourse.students
         guard let courseStudents = editingCourse?.students?.allObjects as? [User] else { return }
         students = courseStudents
-        print(students.count)
+        teacher = editingCourse?.teacher
         tableView.reloadData()
     }
     
@@ -73,7 +72,7 @@ class CourseDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return nil
+            return "Course info"
         case 1:
             return "Students of course"
         default:

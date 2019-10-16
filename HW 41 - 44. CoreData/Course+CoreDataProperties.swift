@@ -2,7 +2,7 @@
 //  Course+CoreDataProperties.swift
 //  HW 41 - 44. CoreData
 //
-//  Created by Kirill Fedorov on 11.10.2019.
+//  Created by Kirill Fedorov on 15.10.2019.
 //  Copyright © 2019 Kirill Fedorov. All rights reserved.
 //
 //
@@ -17,10 +17,11 @@ extension Course {
         return NSFetchRequest<Course>(entityName: "Course")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var sphere: String?
     @NSManaged public var discipline: String?
+    @NSManaged public var sphere: String?
+    @NSManaged public var title: String?
     @NSManaged public var students: NSSet?
+    @NSManaged public var teacher: User?
 
 }
 
