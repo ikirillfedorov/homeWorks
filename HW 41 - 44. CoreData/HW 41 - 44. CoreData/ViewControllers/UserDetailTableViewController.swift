@@ -47,8 +47,10 @@ class UserDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        learningCourses = editingUser?.courses?.allObjects as! [Course]
-        taughtCourses = editingUser?.coursesTaught?.allObjects as! [Course]
+        if editingUser != nil {
+            learningCourses = editingUser?.courses?.allObjects as! [Course]
+            taughtCourses = editingUser?.coursesTaught?.allObjects as! [Course]
+        }
         print(taughtCourses.count)
     }
 
@@ -118,9 +120,11 @@ class UserDetailTableViewController: UITableViewController {
         case 0:
             return "User info"
         case 1:
-            return editingUser?.courses?.count == 0 ? nil : "Learning courses"
+            guard let numberOfLearningCourses = editingUser?.courses?.count else { return nil }
+            return numberOfLearningCourses == 0 ? nil : "Learning courses"
         default:
-            return editingUser?.coursesTaught?.count == 0 ? nil : "Taught courses"
+            guard let numberOfCoursesTaught = editingUser?.coursesTaught?.count else { return nil }
+            return numberOfCoursesTaught == 0 ? nil : "Taught courses"
         }
     }
     

@@ -10,13 +10,21 @@ import UIKit
 
 class TeachersTableViewController: UITableViewController {
     
-    var teachers = [String: [User]]()
+    class Department {
+        var title: String
+        var teachers: [User]
+        
+        init(title: String, teachers:[User]) {
+            self.title = title
+            self.teachers = teachers
+        }
+    }
+    
+    var departments = [Department]()
     var selectedTeacher: User?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,14 +43,16 @@ class TeachersTableViewController: UITableViewController {
 
     //MARK: - Help functions
     private func updateData() {
-        teachers.removeAll()
+        departments.removeAll()
         let courses = CoreDataManager.shared.getCoursesFromCoreData()
         for course in courses {
-            guard let teacher = course.teacher else { continue }
-            if teachers[course.discipline ?? "no discipline"] == nil {
-                teachers[course.discipline ?? "no discipline"] = [teacher]
+            guard let teacher = course.teacher else { return }
+            let departs = departments.filter { $0.title == course.sphere }
+            if let depart = departs.first {
+                depart.teachers.append(teacher)
             } else {
-                teachers[course.discipline ?? "no discipline"]!.append(teacher)
+                departments.append(Department(title: course.sphere ?? "No sphere", teachers: [teacher]))
+
             }
         }
         tableView.reloadData()
@@ -52,23 +62,19 @@ class TeachersTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return teachers.count
+        return departments.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 
-        let key = Array(teachers.keys)[section]
-        guard let array = teachers[key] else { return 0 }
-        return array.count
+        return departments[section].teachers.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         
-        let key = Array(teachers.keys)[indexPath.section]
-        guard let array = teachers[key] else { return cell }
-        let teacher = array[indexPath.row]
+        let teacher = departments[indexPath.section].teachers[indexPath.row]
         cell.textLabel?.text = (teacher.firstName ?? "") + " " + (teacher.lastName ?? "")
         cell.detailTextLabel?.text = "Number of taught courses: \(teacher.coursesTaught?.count ?? 0)"
         
@@ -78,14 +84,15 @@ class TeachersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let key = Array(teachers.keys)[indexPath.section]
-        guard let array = teachers[key] else { return }
-        let teacher = array[indexPath.row]
-        
+        let teacher = departments[indexPath.section].teachers[indexPath.row]
+
         print("Teacher \(teacher.firstName ?? "") \(teacher.lastName ?? "") pressed")
         selectedTeacher = teacher
         performSegue(withIdentifier: "showUserDetailVC", sender: teacher)
-
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return departments[section].title
     }
 
 }
