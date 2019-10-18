@@ -73,26 +73,40 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseDetailCell" id="168-bs-ITY" customClass="CourseDetailTableViewCell" customModule="HW_41___44__CoreData" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="168-bs-ITY" id="Tug-PA-2L5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pr-k8-R9S">
-                                            <rect key="frame" x="20" y="5" width="124" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pr-k8-R9S">
+                                            <rect key="frame" x="20" y="5" width="124" height="33.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="A69-2l-IYb"/>
+                                                <constraint firstAttribute="height" constant="33" id="spK-uL-YKU"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pf9-bl-Y1q">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pf9-bl-Y1q">
                                             <rect key="frame" x="152" y="4" width="242" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="JgC-H0-LJt" id="mj0-D1-gBJ"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pf9-bl-Y1q" firstAttribute="top" secondItem="Tug-PA-2L5" secondAttribute="top" constant="4" id="0nH-8R-khs"/>
+                                        <constraint firstAttribute="trailing" secondItem="pf9-bl-Y1q" secondAttribute="trailing" constant="20" id="1Fk-KC-RtD"/>
+                                        <constraint firstItem="6Pr-k8-R9S" firstAttribute="top" secondItem="Tug-PA-2L5" secondAttribute="top" constant="5" id="LHA-xt-6Fs"/>
+                                        <constraint firstAttribute="bottom" secondItem="pf9-bl-Y1q" secondAttribute="bottom" constant="6" id="SgK-Am-uLC"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Pr-k8-R9S" secondAttribute="bottom" constant="5.5" id="ZiB-vm-PdX"/>
+                                        <constraint firstItem="pf9-bl-Y1q" firstAttribute="leading" secondItem="6Pr-k8-R9S" secondAttribute="trailing" constant="8" id="pOi-aq-Iel"/>
+                                        <constraint firstItem="6Pr-k8-R9S" firstAttribute="leading" secondItem="Tug-PA-2L5" secondAttribute="leading" constant="20" id="sgi-s5-xFc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="6Pr-k8-R9S" id="zgP-Bh-uNe"/>
@@ -268,26 +282,44 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userDetailCell" id="Ifq-Z7-bqT" customClass="UserDetailTableViewCell" customModule="HW_41___44__CoreData" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ifq-Z7-bqT" id="33v-BQ-1d0">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MPK-77-vjv">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MPK-77-vjv">
                                             <rect key="frame" x="145" y="4" width="249" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="249" id="U6a-GV-ohM"/>
+                                                <constraint firstAttribute="height" constant="35" id="le2-NA-yex"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="SPt-0O-cfp" id="2RY-0S-hPy"/>
+                                            </connections>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQd-Sc-7xv">
-                                            <rect key="frame" x="20" y="4" width="117" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQd-Sc-7xv">
+                                            <rect key="frame" x="20" y="4" width="117" height="35.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="k9O-pP-jvp"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="wfU-IG-wWL"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="MPK-77-vjv" secondAttribute="bottom" constant="5" id="ARS-zh-lDi"/>
+                                        <constraint firstAttribute="bottom" secondItem="fQd-Sc-7xv" secondAttribute="bottom" constant="4.5" id="AcS-q3-w2A"/>
+                                        <constraint firstItem="fQd-Sc-7xv" firstAttribute="leading" secondItem="33v-BQ-1d0" secondAttribute="leading" constant="20" id="Q7m-Vn-j8P"/>
+                                        <constraint firstItem="MPK-77-vjv" firstAttribute="leading" secondItem="fQd-Sc-7xv" secondAttribute="trailing" constant="8" id="Qro-xJ-mh5"/>
+                                        <constraint firstAttribute="trailing" secondItem="MPK-77-vjv" secondAttribute="trailing" constant="20" id="Sh1-ew-HBm"/>
+                                        <constraint firstItem="fQd-Sc-7xv" firstAttribute="top" secondItem="33v-BQ-1d0" secondAttribute="top" constant="4" id="V8q-gJ-XMj"/>
+                                        <constraint firstItem="MPK-77-vjv" firstAttribute="top" secondItem="33v-BQ-1d0" secondAttribute="top" constant="4" id="b0b-8h-21d"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="fQd-Sc-7xv" id="Ow4-v2-KQb"/>

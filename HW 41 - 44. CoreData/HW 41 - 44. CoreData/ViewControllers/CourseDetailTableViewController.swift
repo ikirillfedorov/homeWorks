@@ -23,14 +23,14 @@ class CourseDetailTableViewController: UITableViewController {
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
         
         if editingCourse == nil {
-            editingCourse = CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "",
-                                                       discipline: disciplineTextField.text ?? "",
-                                                       sphere: sphereTextField.text ?? "")
+            editingCourse = CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "No title",
+                                                       discipline: disciplineTextField.text ?? "No discipline",
+                                                       sphere: sphereTextField.text ?? "No sphere")
         } else {
             guard let updatingCourse = CoreDataManager.shared.getCourseFromCD(course: editingCourse!) else { return }
-            updatingCourse.title = titleTextField.text ?? ""
-            updatingCourse.discipline = disciplineTextField.text ?? ""
-            updatingCourse.sphere = sphereTextField.text ?? ""
+            updatingCourse.title = titleTextField.text ?? "No title"
+            updatingCourse.discipline = disciplineTextField.text ?? "No discipline"
+            updatingCourse.sphere = sphereTextField.text ?? "No sphere"
         }
         
         editingCourse = nil
@@ -49,10 +49,12 @@ class CourseDetailTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         print("viewWillAppear")
         //set students from editingcourse.students
-        guard let courseStudents = editingCourse?.students?.allObjects as? [User] else { return }
-        students = courseStudents
+        if let courseStudents = editingCourse?.students?.allObjects as? [User] {
+            students = courseStudents
+        }
         teacher = editingCourse?.teacher
         tableView.reloadData()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -142,6 +144,13 @@ class CourseDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if editingCourse == nil {
+            editingCourse = CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "",
+                                                       discipline: disciplineTextField.text ?? "",
+                                                       sphere: sphereTextField.text ?? "")
+        }
+
+        
         if indexPath.section == 0 {
             switch indexPath.row {
             case 3:
@@ -158,11 +167,6 @@ class CourseDetailTableViewController: UITableViewController {
         
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                if editingCourse == nil {
-                    editingCourse = CoreDataManager.shared.addCourseToCoreData(title: titleTextField.text ?? "",
-                                                               discipline: disciplineTextField.text ?? "",
-                                                               sphere: sphereTextField.text ?? "")
-                }
                 //do somthing
                 print("System cell pressed")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -185,5 +189,11 @@ class CourseDetailTableViewController: UITableViewController {
             course.removeFromStudents(studentToDelete)
             tableView.endUpdates()
         }
+    }
+}
+
+extension CourseDetailTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

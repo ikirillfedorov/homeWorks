@@ -8,17 +8,20 @@
 
 import UIKit
 
-class TeachersTableViewController: UITableViewController {
+//MARK: - Department class
+class Department {
+    var title: String
+    var teachers: [User]
     
-    class Department {
-        var title: String
-        var teachers: [User]
-        
-        init(title: String, teachers:[User]) {
-            self.title = title
-            self.teachers = teachers
-        }
+    init(title: String, teachers:[User]) {
+        self.title = title
+        self.teachers = teachers
     }
+}
+
+
+//MARK: - TeachersTableViewController
+class TeachersTableViewController: UITableViewController {
     
     var departments = [Department]()
     var selectedTeacher: User?
@@ -40,34 +43,30 @@ class TeachersTableViewController: UITableViewController {
         }
     }
 
-
     //MARK: - Help functions
     private func updateData() {
         departments.removeAll()
-        let courses = CoreDataManager.shared.getCoursesFromCoreData()
-        for course in courses {
-            guard let teacher = course.teacher else { return }
-            let departs = departments.filter { $0.title == course.sphere }
-            if let depart = departs.first {
-                depart.teachers.append(teacher)
+        let coursesWithTeacher = CoreDataManager.shared.getCoursesFromCoreData().filter { $0.teacher != nil }
+        print("coursesWithTeacher = \(coursesWithTeacher.count)")
+        for course in coursesWithTeacher {
+            if let depart = departments.first(where: { $0.title == course.sphere }) {
+                depart.teachers.append(course.teacher!)
             } else {
-                departments.append(Department(title: course.sphere ?? "No sphere", teachers: [teacher]))
-
+                print("Depart created")
+                departments.append(Department(title: course.sphere ?? "No sphere", teachers: [course.teacher!]))
             }
         }
+        print("departments count = \(departments.count)")
         tableView.reloadData()
     }
     
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        print(departments.count)
         return departments.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-
         return departments[section].teachers.count
     }
 
@@ -77,7 +76,7 @@ class TeachersTableViewController: UITableViewController {
         let teacher = departments[indexPath.section].teachers[indexPath.row]
         cell.textLabel?.text = (teacher.firstName ?? "") + " " + (teacher.lastName ?? "")
         cell.detailTextLabel?.text = "Number of taught courses: \(teacher.coursesTaught?.count ?? 0)"
-        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 
